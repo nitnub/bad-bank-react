@@ -11,15 +11,17 @@ import getInitialValues from '../utils/getInitialValues';
 function BankForm(props) {
   const context = useContext(UserContext);
   const validationSchema = Yup.object(getValidationSchema(props));
-
+  const clearForm = () => {};
   return (
     <div className="card form-view">
       <div className="card-body">
         <Formik
           initialValues={getInitialValues(props)}
           validationSchema={validationSchema}
-          onSubmit={(values) => {
-            alert(JSON.stringify(values, null, 2));
+          onSubmit={(values, { resetForm }) => {
+            console.log(props);
+            props.handler();
+            resetForm();
           }}
         >
           {(formik) => (
@@ -49,10 +51,11 @@ function BankForm(props) {
                   <FormElement formik={formik} label="Amount" type="number" />
                 </>
               )}
-
-              <button className="btn btn-primary" type="submit">
-                Submit
-              </button>
+              <div className="btn-container">
+                <button className="btn btn-primary" type="submit">
+                  Submit
+                </button>
+              </div>
             </Form>
           )}
         </Formik>

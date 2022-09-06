@@ -10,7 +10,7 @@ function FormElement({ formik, label, type }) {
           {label}
         </label>
 
-        <Field className="form-control" name={name} type={type} min="0"/>
+        <Field className="form-control" id={name} name={name} type={type} min="0"/>
 
         {formik.submitCount && formik.errors[name] ? (
           <ErrorMessage className="error-text" name={name}>
