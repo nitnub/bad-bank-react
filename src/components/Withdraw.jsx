@@ -3,7 +3,9 @@ function Withdraw() {
   console.log('accessing Withdraw...');
   return (
     <div className="main-content">
-      <BankForm />
+      <BankForm 
+        showAmount
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import FormElement from './FormElement';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -25,7 +26,7 @@ const validationSchema = Yup.object({
     .integer('Please enter a whole number greater than zero'),
 });
 
-function BankForm() {
+function BankForm({ showName, showPassword, showEmail, showAmount }) {
   return (
     <div className="card form-view">
       <div className="card-body">
@@ -43,70 +44,14 @@ function BankForm() {
         >
           {(formik) => (
             <Form onSubmit={formik.handleSubmit} noValidate>
-              <div className="form-section">
-                <label className="form-label" htmlFor="name">
-                  Name
-                </label>
-                <Field className="form-control" name="name" type="text" />
-                {formik.submitCount && formik.errors['name'] ? (
-                  <ErrorMessage className="error-text" name="name">
-                    {(msg) => <div className="error-text">{msg}</div>}
-                  </ErrorMessage>
-                ) : (
-                  <div className="error-text">&nbsp;</div>
-                )}
-              </div>
+              {showName && <FormElement formik={formik} label="Name" type="text" />}
 
-              <div className="form-section">
-                <label className="form-label" htmlFor="password">
-                  Password
-                </label>
-                <Field
-                  className="form-control"
-                  name="password"
-                  type="password"
-                />
-                          {formik.submitCount && formik.errors['name'] ? (
-                  <ErrorMessage className="error-text" name="password">
-                    {(msg) => <div className="error-text">{msg}</div>}
-                  </ErrorMessage>
-                ) : (
-                  <div className="error-text">&nbsp;</div>
-                )}
-              </div>
+              {showPassword && <FormElement formik={formik} label="Password" type="password" />}
 
-              <div className="form-section">
-                <label className="form-label" htmlFor="email">
-                  Email Address
-                </label>
-                <Field className="form-control" name="email" type="email" />
-                {formik.submitCount && formik.errors['email'] ? (
-                  <ErrorMessage className="error-text" name="email">
-                    {(msg) => <div className="error-text">{msg}</div>}
-                  </ErrorMessage>
-                ) : (
-                  <div className="error-text">&nbsp;</div>
-                )}
-              </div>
+              {showEmail && <FormElement formik={formik} label="Email Address" type="email" />}
+              
+              {showAmount && <FormElement formik={formik} label="Amount" type="number" />}
 
-              <div className="form-section">
-                <label className="form-label" htmlFor="amount">
-                  Amount
-                </label>
-                <Field
-                  className="form-control"
-                  name="amount"
-                  type="number"
-                  min="0"
-                />
-                              {formik.submitCount && formik.errors['amount'] ? (
-                  <ErrorMessage className="error-text" name="amount">
-                    {(msg) => <div className="error-text">{msg}</div>}
-                  </ErrorMessage>
-                ) : (
-                  <div className="error-text">&nbsp;</div>
-                )}
-              </div>
               <button className="btn btn-primary" type="submit">
                 Submit
               </button>
