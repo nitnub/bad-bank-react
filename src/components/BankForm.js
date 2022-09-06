@@ -1,50 +1,31 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-// A custom validation function. This must return an object
-// which keys are symmetrical to our values/initialValues
-const validate = (values) => {
-  const errors = {};
-  if (!values.name) {
-    errors.name = 'Required';
-  } else if (values.name.length > 15) {
-    errors.name = 'Must be 15 characters or less';
-  }
-
-  if (!values.password) {
-    errors.password = 'Required';
-  } else if (values.password.length > 20) {
-    errors.password = 'Must be 20 characters or less';
-  }
-
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-
-  return errors;
-};
+const validationSchema = Yup.object({
+  name: Yup.string()
+            .required('Please enter a Name')
+            .min(3, 'Name must be at least 3 characters long'),
+            
+  password: Yup.string()
+            .required()
+            .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, 
+              `Password must have one each of: 
+                Upper case
+                Lower case
+                Number (0-9)
+                Special Character (#?!@$%^&*-)
+                Must be at least 8 characters long`), //https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+  email: Yup.string()
+            .required() 
+            .email('Please enter a valid email address'),
+  amount: Yup.number()
+            .required('Please enter a whole number greater than zero')
+            .positive('Please enter a whole number greater than zero')
+            .integer('Please enter a whole number greater than zero'),
+});
 
 const BankForm = () => {
-  // Pass the useFormik() hook initial form values, a validate function that will be called when
-  // form values change or fields are blurred, and a submit function that will
-  // be called when the form is submitted
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: '',
-  //     password: '',
-  //     email: '',
-  //     amount: '',
-  //   },
-  //   validate,
-  //   onSubmit: (values) => {
-  //     alert(JSON.stringify(values, null, 2));
-  //   },
-  // });
-
-  // console.log(formik.errors.name);
-  // console.log(formik.touched.name);
   return (
     <Formik
       initialValues={{
@@ -53,70 +34,32 @@ const BankForm = () => {
         email: '',
         amount: '',
       }}
-      validationSchema={validate}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         alert(JSON.stringify(values, null, 2));
       }}
     >
-      <form onSubmit={formik.handleSubmit} noValidate>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          // name="name"
-          type="text"
-          // onChange={formik.handleChange}
-          // onBlur={formik.handleBlur}
-          // value={formik.values.name}
-          {...formik.getFieldProps('name')}
-        />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
-        ) : null}
+      {(formik) => (
+        <Form onSubmit={formik.handleSubmit} noValidate>
+          <label htmlFor="name">Name</label>
+          <Field name="name" type="text" />
+          <ErrorMessage name="name" />
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          // name="password"
-          type="password"
-          // onChange={formik.handleChange}
-          // onBlur={formik.handleBlur}
-          // value={formik.values.password}
-          {...formik.getFieldProps('password')}
-        />
-        {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
-        ) : null}
+          <label htmlFor="password">Password</label>
+          <Field name="password" type="password" />
+          <ErrorMessage name="password" />
 
-        <label htmlFor="email">Email Address</label>
-        <input
-          id="email"
-          // name="email"
-          type="email"
-          // onChange={formik.handleChange}
-          // onBlur={formik.handleBlur}
-          // value={formik.values.email}
-          {...formik.getFieldProps('email')}
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
+          <label htmlFor="email">Email Address</label>
+          <Field name="email" type="email" />
+          <ErrorMessage name="email" />
 
-        <label htmlFor="amount">Amount</label>
-        <input
-          id="amount"
-          // name="amount"
-          type="number"
-          // onChange={formik.handleChange}
-          // onBlur={formik.handleBlur}
-          // value={formik.values.amount}
-          {...formik.getFieldProps('amount')}
-        />
-        {formik.touched.amount && formik.errors.amount ? (
-          <div>{formik.errors.amount}</div>
-        ) : null}
+          <label htmlFor="amount">Amount</label>
+          <Field name="amount" type="number" />
+          <ErrorMessage name="amount" />
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </Form>
+      )}
     </Formik>
   );
 };
