@@ -7,3 +7,4 @@ function intToCurrency(int) {
   return formatter.format(int);
 }
 
+export default intToCurrency;

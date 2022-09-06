@@ -24,6 +24,12 @@
 .form-label {
   margin-bottom: 0 0 4px;
 }
+
+.balance-display {
+  display: flex;
+  justify-content: space-between;
+}
+
 .error-field {
   /* border-danger */
   border-color: red;

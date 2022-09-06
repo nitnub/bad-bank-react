@@ -11,7 +11,7 @@ function BankForm(props) {
     color,
     title,
   } = props;
-
+  
   // Bootstrap form validation boilerplate
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   // const validateForm = () => {

@@ -4,3 +4,5 @@ function getCurrentUser(context) {
   );
   return currentUser;
 }
+
+export default getCurrentUser;

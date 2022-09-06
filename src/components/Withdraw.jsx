@@ -5,6 +5,7 @@ function Withdraw() {
     <div className="main-content">
       <BankForm 
         showAmount
+        showname
       />
     </div>
   );
