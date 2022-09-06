@@ -19,7 +19,7 @@ function App() {
           <Route path="/withdraw/" element={<Withdraw />} />
         </Routes>
       </UserContext.Provider>
-      <BankForm />
+      {/* <BankForm /> */}
     </HashRouter>
   );
 }

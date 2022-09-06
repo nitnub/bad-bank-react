@@ -1,6 +1,11 @@
+import BankForm from './BankForm';
 function Withdraw() {
-  console.log('accessing Withdraw...')
-  return(<h1>Withdraw!</h1>)
+  console.log('accessing Withdraw...');
+  return (
+    <div className="main-content">
+      <BankForm />
+    </div>
+  );
 }
 
 export default Withdraw;

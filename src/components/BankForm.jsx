@@ -43,17 +43,21 @@ function BankForm() {
         >
           {(formik) => (
             <Form onSubmit={formik.handleSubmit} noValidate>
-              <div>
+              <div className="form-section">
                 <label className="form-label" htmlFor="name">
                   Name
                 </label>
                 <Field className="form-control" name="name" type="text" />
-                <ErrorMessage className="error-text" name="name" >
-                  {(msg) => <div className="error-text">{msg}</div>}
-                </ErrorMessage>
+                {formik.submitCount && formik.errors['name'] ? (
+                  <ErrorMessage className="error-text" name="name">
+                    {(msg) => <div className="error-text">{msg}</div>}
+                  </ErrorMessage>
+                ) : (
+                  <div className="error-text">&nbsp;</div>
+                )}
               </div>
 
-              <div>
+              <div className="form-section">
                 <label className="form-label" htmlFor="password">
                   Password
                 </label>
@@ -62,29 +66,46 @@ function BankForm() {
                   name="password"
                   type="password"
                 />
-                <ErrorMessage name="password" >
-                  {(msg) => <div className="error-text">{msg}</div>}
-                </ErrorMessage>
+                          {formik.submitCount && formik.errors['name'] ? (
+                  <ErrorMessage className="error-text" name="password">
+                    {(msg) => <div className="error-text">{msg}</div>}
+                  </ErrorMessage>
+                ) : (
+                  <div className="error-text">&nbsp;</div>
+                )}
               </div>
 
-              <div>
+              <div className="form-section">
                 <label className="form-label" htmlFor="email">
                   Email Address
                 </label>
                 <Field className="form-control" name="email" type="email" />
-                <ErrorMessage name="email" >
-                  {(msg) => <div className="error-text">{msg}</div>}
-                </ErrorMessage>
+                {formik.submitCount && formik.errors['email'] ? (
+                  <ErrorMessage className="error-text" name="email">
+                    {(msg) => <div className="error-text">{msg}</div>}
+                  </ErrorMessage>
+                ) : (
+                  <div className="error-text">&nbsp;</div>
+                )}
               </div>
 
-              <div>
+              <div className="form-section">
                 <label className="form-label" htmlFor="amount">
                   Amount
                 </label>
-                <Field className="form-control" name="amount" type="number" min='0' />
-                <ErrorMessage name="amount">
-                  {(msg) => <div className="error-text">{msg}</div>}
-                </ErrorMessage>
+                <Field
+                  className="form-control"
+                  name="amount"
+                  type="number"
+                  min="0"
+                />
+                              {formik.submitCount && formik.errors['amount'] ? (
+                  <ErrorMessage className="error-text" name="amount">
+                    {(msg) => <div className="error-text">{msg}</div>}
+                  </ErrorMessage>
+                ) : (
+                  <div className="error-text">&nbsp;</div>
+                )}
               </div>
               <button className="btn btn-primary" type="submit">
                 Submit
@@ -95,6 +116,6 @@ function BankForm() {
       </div>
     </div>
   );
-};
+}
 
 export default BankForm;

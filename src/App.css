@@ -4,10 +4,26 @@
   padding: 0;
 }
 
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dacd71;
+  height: calc(100vh - 56px);
+
+}
+
 .form-view {
   width: 20em;
 }
 
+.form-section {
+  /* margin: 26px 0; */
+}
+
+.form-label {
+  margin-bottom: 0 0 4px;
+}
 .error-field {
   /* border-danger */
   border-color: red;
