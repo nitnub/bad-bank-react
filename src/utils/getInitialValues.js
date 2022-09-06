@@ -2,19 +2,19 @@ const getInitialValues = ({showName, showPassword, showEmail, showAmount}) => {
   const initialValues = {};
 
   if (showName) {
-    initialValues['name'] = ' ';
+    initialValues['name'] = '';
   }
 
   if (showPassword) {
-    initialValues['password'] = ' ';
+    initialValues['password'] = '';
   }
 
   if (showEmail) {
-    initialValues['email'] = ' ';
+    initialValues['email-address'] = '';
   }
 
   if (showAmount) {
-    initialValues['amount'] = ' ';
+    initialValues['amount'] = '';
   }
 
   return initialValues;

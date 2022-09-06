@@ -24,7 +24,7 @@ function NavBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#/withdraw/">
+              <a className="nav-link" href="#/Withdraw/">
                 Withdraw
               </a>
             </li>

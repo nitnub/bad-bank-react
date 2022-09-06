@@ -10,13 +10,22 @@
   justify-content: center;
   background-color: #dacd71;
   height: calc(100vh - 56px);
-
 }
+
+.content-header {
+  align-self: flex-start;
+  margin-right: auto;
+  padding: 6px 12px;
+}
+
 
 .form-view {
   width: 20em;
 }
 
+.card.form-view {
+position: absolute;
+}
 .form-section {
   /* margin: 26px 0; */
 }

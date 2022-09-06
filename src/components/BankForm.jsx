@@ -9,7 +9,7 @@ import getValidationSchema from '../utils/getValidationSchema';
 import getInitialValues from '../utils/getInitialValues';
 
 function BankForm(props) {
-  const ctx = useContext(UserContext);
+  const context = useContext(UserContext);
   const validationSchema = Yup.object(getValidationSchema(props));
 
   return (
@@ -44,7 +44,7 @@ function BankForm(props) {
                 <>
                   <div className="balance-display">
                     <h2>Balance</h2>
-                    <h3>{intToCurrency(getCurrentUser(ctx).balance)}</h3>
+                    <h3>{intToCurrency(getCurrentUser(context).balance)}</h3>
                   </div>
                   <FormElement formik={formik} label="Amount" type="number" />
                 </>

@@ -5,6 +5,10 @@ import NavBar from './components/NavBar';
 import BankForm from './components/BankForm';
 import { HashRouter, Link, Routes, Route } from 'react-router-dom';
 import Withdraw from './components/Withdraw';
+import AllData from './components/AllData';
+import CreateAccount from './components/CreateAccount';
+import Deposit from './components/Deposit';
+import Home from './components/Home';
 function App() {
   // const UserContext = createContext(null);
   let initialState = {
@@ -41,7 +45,11 @@ function App() {
       <NavBar />
       <UserContext.Provider value={initialState}>
         <Routes>
-          <Route path="/withdraw/" element={<Withdraw />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/CreateAccount" element={<CreateAccount />} />
+          <Route path="/Withdraw/" element={<Withdraw />} />
+          <Route path="/Deposit/" element={<Deposit />} />
+          <Route path="/AllData/" element={<AllData />} />
         </Routes>
       </UserContext.Provider>
      

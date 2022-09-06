@@ -6,7 +6,7 @@ const getValidationSchema = ({
   showAmount,
 }) => {
   let schema = {};
-  
+
   if (showName) {
     schema.name = Yup.string()
       .required('Please enter a Name')
@@ -28,7 +28,7 @@ const getValidationSchema = ({
   }
 
   if (showEmail) {
-    schema.email = Yup.string()
+    schema['email-address'] = Yup.string()
       .required()
       .email('Please enter a valid email address');
   }
