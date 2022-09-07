@@ -14,7 +14,7 @@ function Withdraw() {
 
 
     if (currentUser.balance >= amount) {
-      console.log(context.users[context.currentUser].balance);
+      // console.log(context.users[context.currentUser].balance);
       context.users[context.currentUser].balance -= amount;
       alert(`You've withdrawn ${intToCurrency(amount)} from your account. Your remaining balance is ${intToCurrency(currentUser.balance)}`)
     } else {
@@ -24,7 +24,6 @@ function Withdraw() {
         )}`
       );
     }
-
   };
 
 

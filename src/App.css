@@ -54,3 +54,8 @@ position: absolute;
   text-align: center;
   margin-top: 4px;
 }
+
+.table-container {
+
+  width: 648px;
+}
