@@ -26,7 +26,7 @@ function AllData() {
             <tbody>
               {ctx.users.map((user) => {
                 return (
-                  <tr>
+                  <tr key={user.id}>
                     {/* <th scope="row">1</th> */}
                     <td>{user.id}</td>
                     <td>{user.name}</td>

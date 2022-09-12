@@ -28,7 +28,7 @@ function CreateAccount() {
       return {
         ...modalMessage,
         title: 'Success!',
-        header: `User ${args['email-address']} created`,
+        header: `User ${args.email} created`,
         body: ``,
       };
     });
