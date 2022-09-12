@@ -1,47 +1,23 @@
+import {Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Bad Bank
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="#/CreateAccount/">
-                Create Account
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#/Withdraw/">
-                Withdraw
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#/Deposit/">
-                Deposit
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#/AllData/">
-                AllData
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+<Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#">Bad Bank</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#/CreateAccount/">Create Account</Nav.Link>
+            <Nav.Link href="#/Withdraw/">Withdraw</Nav.Link>
+            <Nav.Link href="#/Deposit/">Deposit</Nav.Link>
+            <Nav.Link href="#/AllData/">All Data</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
   );
 }
 
