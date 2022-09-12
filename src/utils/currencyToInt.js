@@ -5,3 +5,5 @@ function currencyToInt(string) {
     .replace('.00', '');
   return Number(numAsString);
 }
+
+module.exports = currencyToInt ;
