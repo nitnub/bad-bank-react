@@ -19,7 +19,7 @@ function BankForm(props) {
           initialValues={getInitialValues(props)}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
-            props.handler();
+            props.handler(values);
             resetForm();
           }}
         >
@@ -36,7 +36,7 @@ function BankForm(props) {
               {props.showEmail && (
                 <FormElement
                   formik={formik}
-                  label="Email Address"
+                  label="Email"
                   type="email"
                 />
               )}
@@ -47,7 +47,7 @@ function BankForm(props) {
                     <h2>Balance</h2>
                     <h3>{intToCurrency(getCurrentUser(context).balance)}</h3>
                   </div>
-                  <FormElement formik={formik} label="Amount" type="number" />
+                  <FormElement formik={formik} label={`Amount to ${props.transferType}`} type="number" />
                 </>
               )}
               <div className="btn-container">

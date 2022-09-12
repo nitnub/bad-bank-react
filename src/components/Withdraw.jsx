@@ -51,14 +51,13 @@ function Withdraw() {
 
   return (
     <div className="main-content">
+      <h1 className="content-header">Withdraw</h1>
+      <BankForm showAmount showname handler={handler} transferType="withdraw" />
       <BankModal
         show={modalVisible}
         modalMessage={modalMessage}
         onHide={() => setModalVisible(false)}
       />
-
-      <h1 className="content-header">Withdraw</h1>
-      <BankForm showAmount showname handler={handler} />
     </div>
   );
 }

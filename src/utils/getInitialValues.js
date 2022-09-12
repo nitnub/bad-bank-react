@@ -10,7 +10,7 @@ const getInitialValues = ({showName, showPassword, showEmail, showAmount}) => {
   }
 
   if (showEmail) {
-    initialValues['email-address'] = '';
+    initialValues['email'] = '';
   }
 
   if (showAmount) {

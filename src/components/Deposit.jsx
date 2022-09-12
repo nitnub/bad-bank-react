@@ -33,6 +33,7 @@ function Withdraw() {
         showAmount
         showname
         handler={handler}
+        transferType="deposit"
       />
     </div>
   );

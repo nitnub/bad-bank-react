@@ -28,7 +28,7 @@ const getValidationSchema = ({
   }
 
   if (showEmail) {
-    schema['email-address'] = Yup.string()
+    schema.email = Yup.string()
       .required()
       .email('Please enter a valid email address');
   }
