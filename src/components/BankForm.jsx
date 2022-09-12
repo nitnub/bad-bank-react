@@ -19,7 +19,6 @@ function BankForm(props) {
           initialValues={getInitialValues(props)}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
-            console.log(props);
             props.handler();
             resetForm();
           }}
