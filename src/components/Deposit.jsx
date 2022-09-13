@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import UserContext from '../contexts/UserContext';
-import BankForm from './BankForm';
+import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 function Withdraw() {
  
@@ -33,7 +33,7 @@ function Withdraw() {
         showAmount
         showname
         handler={handler}
-        transferType="deposit"
+        transferType="Deposit"
       />
     </div>
   );

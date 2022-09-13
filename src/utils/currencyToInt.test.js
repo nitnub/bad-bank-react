@@ -1,4 +1,6 @@
-const currencyToInt = require('./currencyToInt');
+// const currencyToInt = require('./currencyToInt');
+
+import currencyToInt from './currencyToInt';
 
 describe('test currencyToInt()', () => {
   it('convert $1.00', () => {

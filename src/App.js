@@ -1,8 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import UserContext from './contexts/UserContext';
 import NavBar from './components/NavBar';
-import BankForm from './components/BankForm';
+// import BankForm from './components/BankForm';
 import { HashRouter, Link, Routes, Route } from 'react-router-dom';
 import Withdraw from './components/Withdraw';
 import AllData from './components/AllData';

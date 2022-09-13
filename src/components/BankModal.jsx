@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import React, { useState } from 'react';
 const BankModal = (props) => {
  console.log(props)
+ const { modalmessage, onHide } = props;
   return (
 <>
 
@@ -16,17 +17,17 @@ const BankModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.modalMessage.title}
+          {modalmessage.title}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>{props.modalMessage.header}</h4>
+        <h4>{modalmessage.header}</h4>
         <p>
-          {props.modalMessage.body}
+          {modalmessage.body}
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
     </>

@@ -6,4 +6,4 @@ function getCurrentUser(context) {
 }
 
 export default getCurrentUser;
-module.exports = getCurrentUser;
+// module.exports = getCurrentUser;

@@ -1,4 +1,5 @@
-const getCurrentUser = require('./getCurrentUser')
+// const getCurrentUser = require('./getCurrentUser')
+import getCurrentUser from './getCurrentUser'
 
 describe('test getCurrentUser', () => {
   const testContext = {

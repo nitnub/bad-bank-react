@@ -1,8 +1,9 @@
 import { Field, ErrorMessage } from 'formik';
 
 function FormElement({ formik, label, type }) {
-  const name = label.toLowerCase().replace(' ', '-');
+  const labelLower = label.toLowerCase().replace(' ', '-');
 
+  const name = labelLower === 'withdraw' || labelLower === 'deposit'  ? 'amount' : labelLower;
   return (
     <>
       <div className="form-section">

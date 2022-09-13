@@ -1,4 +1,4 @@
-import BankForm from './BankForm';
+import BankForm from './Form/BankForm';
 import BankModal from './BankModal';
 import { useContext, useState } from 'react';
 import UserContext from '../contexts/UserContext';
@@ -42,10 +42,10 @@ function CreateAccount() {
   return (
     <div className="main-content">
       <h1 className="content-header">Create Account</h1>
-      <BankForm showName showEmail showPassword handler={handler} />
+      <BankForm showName showEmail showPassword buttonText={'aaa'} handler={handler} />
       <BankModal
         show={modalVisible}
-        modalMessage={modalMessage}
+        modalMessage={{...modalMessage}}
         onHide={() => setModalVisible(false)}
       />
     </div>
