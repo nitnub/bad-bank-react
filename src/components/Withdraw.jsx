@@ -3,6 +3,8 @@ import UserContext from '../contexts/UserContext';
 import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
+import getCurrentUser from '../utils/getCurrentUser';
+
 function Withdraw() {
   const [modalVisible, setModalVisible] = useState(false);
   // set to lower case to avoid Unknown Prop Warning
@@ -14,21 +16,21 @@ function Withdraw() {
   const context = useContext(UserContext);
   const handler = () => {
     const entry = document.getElementById('amount');
-    const amount = entry.value;
-    const [currentUser] = context.users.filter(
-      (user) => user.id === context.currentUser
-    );
+    const withdrawAmount = entry.value;
 
-    if (currentUser.balance >= amount) {
-      context.users[context.currentUser].balance -= amount;
+    const currentUser = getCurrentUser(context);
+   
+
+    if (currentUser.balance >= withdrawAmount) {
+      context.users[context.currentUser].balance -= withdrawAmount;
       setModalMessage((modalmessage) => {
         return {
           ...modalmessage,
           title: 'Success!',
-          header: `${intToCurrency(amount)} withdrawn`,
-          body: `You've withdrawn ${intToCurrency(
-            amount
-          )} from your account. Your remaining balance is ${intToCurrency(
+          header: `${intToCurrency(withdrawAmount)} withdrawn`,
+          body: `${intToCurrency(
+            withdrawAmount
+          )} has been withdrawn from your account. Your remaining balance is ${intToCurrency(
             currentUser.balance
           )}`,
         };
