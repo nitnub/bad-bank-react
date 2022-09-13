@@ -13,8 +13,12 @@ function BankForm(props) {
 
   const context = useContext(UserContext);
   const validationSchema = Yup.object(getValidationSchema(props));
-
-  const clearForm = () => {};
+  const isDisabled = (values) => {
+    let disabled = false;
+    Object.keys(values).forEach((value) => values[value].length === 0 ? disabled = true : null)
+    return disabled;
+  }
+ 
   return (
     <div className="card form-view">
       <div className="card-body">
@@ -54,7 +58,9 @@ function BankForm(props) {
                 </>
               )}
               <div className="btn-container">
-                <button className="btn btn-primary" type="submit">
+                <button className="btn btn-primary" 
+                disabled={isDisabled(formik.values)}
+                type="submit">
                   {props.buttonText ? props.buttonText : 'Submit'}
                 </button>
               </div>

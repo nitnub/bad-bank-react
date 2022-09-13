@@ -4,24 +4,73 @@
   padding: 0;
 }
 
+body {
+  display: grid;
+}
+
+
+
+.tooltip-container {
+  display: grid;
+}
+
 .main-content {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #c8e4a8;
   height: calc(100vh - 56px);
+  width: 100vw;
 }
 
 .main-content.main {
   flex-direction: column;
   align-items: center;
-  /* background-color: red; */
 }
 
 .content-header {
   align-self: flex-start;
   margin-right: auto;
   padding: 6px 12px;
+}
+
+
+/* .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+
+
+  /* position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}  */
+
+
+
+
+
+/* Below are custom created */
+
+.tool-tip {
+  position: absolute;
 }
 
 /* Home */

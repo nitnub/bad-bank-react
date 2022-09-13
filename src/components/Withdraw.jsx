@@ -4,6 +4,7 @@ import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
 import getCurrentUser from '../utils/getCurrentUser';
+import { decrementUserBalance } from '../utils/util';
 
 function Withdraw() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -15,14 +16,13 @@ function Withdraw() {
   });
   const context = useContext(UserContext);
   const handler = () => {
-    const entry = document.getElementById('amount');
-    const withdrawAmount = entry.value;
+    const target = document.getElementById('amount');
+    const withdrawAmount = target.value;
 
     const currentUser = getCurrentUser(context);
-   
 
     if (currentUser.balance >= withdrawAmount) {
-      context.users[context.currentUser].balance -= withdrawAmount;
+      decrementUserBalance(context, withdrawAmount);
       setModalMessage((modalmessage) => {
         return {
           ...modalmessage,

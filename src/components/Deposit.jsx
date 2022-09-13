@@ -1,10 +1,13 @@
 import { useContext, useState } from 'react';
 import UserContext from '../contexts/UserContext';
 import BankForm from './Form/BankForm';
-import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
-import getCurrentUser from '../utils/getCurrentUser';
-import { updateCurrentUserBalance, getCurrentUserBalance } from '../utils/util';
+
+import {
+  getUserBalance,
+  incrementUserBalance,
+  intToCurrency,
+} from '../utils/util';
 
 function Deposit() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -17,11 +20,10 @@ function Deposit() {
   const context = useContext(UserContext);
 
   const handler = () => {
-    const entry = document.getElementById('amount');
-    const depositAmount = entry.value;
-
-    updateCurrentUserBalance(context, depositAmount);
-
+    const target = document.getElementById('amount');
+    const depositAmount = target.value;
+    incrementUserBalance(context, depositAmount)
+    
     setModalMessage((modalmessage) => {
       return {
         ...modalmessage,
@@ -30,7 +32,7 @@ function Deposit() {
         body: `${intToCurrency(
           depositAmount
         )} has been deposited into your account. Your new balance is ${intToCurrency(
-          getCurrentUserBalance(context)
+          getUserBalance(context)
         )}`,
       };
     });

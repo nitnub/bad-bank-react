@@ -36,8 +36,8 @@ const getValidationSchema = ({
   if (showAmount) {
     schema.amount = Yup.number()
       .required('Please enter an amount')
-      .positive('Please enter a whole number greater than zero')
-      .integer('Please enter a whole number greater than zero');
+      .positive('Amount must be greater than zero')
+      .integer('Amount must be greater than zero');
   }
   return schema;
 };
