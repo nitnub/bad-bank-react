@@ -1,3 +1,13 @@
+:root {
+  /* --clr-background: rgb(149, 144, 244);  */
+  /* --clr-card-bg: rgb(201, 199, 253); */
+  /* --clr-background: rgb(45, 70, 234);  */
+  --clr-background: #39433e; 
+  /* --clr-card-bg: rgb(201, 199, 253); */
+  --clr-white: white;
+
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,17 +18,25 @@ body {
   display: grid;
 }
 
-
-
 .tooltip-container {
   display: grid;
+}
+
+
+
+.nav-bar {
+  background-color: var(--clr-background);
+  /* box-shadow: 8px 8px 16px var(--bs-body-color) */
+  /* background-color: red; */
 }
 
 .main-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #c8e4a8;
+  /* background-color: var(--clr-background); */
+  background-color: var(--clr-white);
+  /* background-color: var(--bs-body-color); */
   height: calc(100vh - 56px);
   width: 100vw;
 }
@@ -32,39 +50,16 @@ body {
   align-self: flex-start;
   margin-right: auto;
   padding: 6px 12px;
+  background-color: var(--clr-background);
+  color: var(--clr-white);
+  border-bottom-right-radius: 10px;
 }
 
-
-/* .tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
+.header {
+  background-color: var(--clr-background);
+  color: var(--clr-white);
+  border-right-color: var(--clr-background);
 }
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-
-
-  /* position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 105%;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}  */
-
-
-
 
 
 /* Below are custom created */
@@ -82,9 +77,17 @@ body {
   width: 20em;
 }
 
+.card {
+  background-color: var(--clr-white);
+  box-shadow: 8px 8px 16px var(--bs-body-color)
+}
+
+
+
 .card.form-view {
 position: absolute;
 }
+
 .form-section {
   /* margin: 26px 0; */
 }

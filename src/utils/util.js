@@ -21,17 +21,13 @@ export const getUserBalance = (context) => {
   return currentUser.balance;
 };
 
-
 export const incrementUserBalance = (context, amount) => {
   updateUserBalance(context, amount);
-}
+};
 
 export const decrementUserBalance = (context, amount) => {
   updateUserBalance(context, -amount);
-}
-
-
-
+};
 
 export const updateUserBalance = (context, amount) => {
   // const context = useContext(UserContext);
@@ -47,6 +43,15 @@ export const intToCurrency = (int) => {
     maximumSignificantDigits: 10,
   });
   return formatter.format(int);
+};
+
+export const updateHeader = (currentPage) => {
+  const home = document.getElementById('nav-home');
+  const createAccount = document.getElementById('nav-create-account');
+  const withdraw = document.getElementById('nav-withdraw');
+  const deposit = document.getElementById('nav-deposit');
+  const allData = document.getElementById('nav-all-data');
+  const pageObj = { home, createAccount, withdraw, deposit, allData };
 };
 
 // export { getCurrentUser, getCurrentUserBalance, updateCurrentUserBalance }

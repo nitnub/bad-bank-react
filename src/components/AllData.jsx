@@ -3,9 +3,6 @@ import UserContext from '../contexts/UserContext';
 import intToCurrency from '../utils/intToCurrency';
 function AllData() {
   console.log('accessing AllData...');
-  // return (
-  //   <div className="main-content">
-  //     <h1 className="content-header">All Data</h1>
 
   const ctx = useContext(UserContext);
   console.log(ctx.users);
@@ -14,13 +11,13 @@ function AllData() {
       <div className="table-container table-responsive-md">
         <div className="card">
           <table className="table">
-            <thead>
+            <thead className="header">
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Balance</th>
-                <th scope="col">Password</th>
+                <th className="header" scope="col">Password</th>
               </tr>
             </thead>
             <tbody>
@@ -41,9 +38,6 @@ function AllData() {
         </div>
       </div>
     </div>
-    // );
-
-    //  </div>
   );
 }
 
