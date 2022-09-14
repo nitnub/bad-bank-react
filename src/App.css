@@ -22,23 +22,29 @@ body {
   display: grid;
 }
 
-
-
 .nav-bar {
   background-color: var(--clr-background);
-  /* box-shadow: 8px 8px 16px var(--bs-body-color) */
-  /* background-color: red; */
+}
+
+.route-container {
+  margin: auto;
+  background-color: red;
+}
+
+#page-container {
+  width: 100vw;
+  display: grid;
+  margin: auto;
+  background-color: var(--clr-white);
 }
 
 .main-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: var(--clr-background); */
   background-color: var(--clr-white);
-  /* background-color: var(--bs-body-color); */
-  height: calc(100vh - 56px);
-  width: 100vw;
+  height: calc(100vh - 56px); 
+
 }
 
 .main-content.main {
@@ -46,13 +52,44 @@ body {
   align-items: center;
 }
 
+.header-container {
+  position:absolute;
+  display: flex;
+  left: 0;
+}
+
+.header-span {
+  display: flex;
+  grid-area: 1/1/1/1;
+  width: 100vw;
+  height: fit-content;
+}
+
+.span-left {
+  background-color: var(--clr-background);
+  color: var(--clr-white);
+  width:100vw;
+}
+
+.span-right {
+  height: 60px;
+  width:100vw;
+}
+
 .content-header {
+  position: relative;
   align-self: flex-start;
-  margin-right: auto;
+  left: 0;
+  right: 0;
   padding: 6px 12px;
   background-color: var(--clr-background);
   color: var(--clr-white);
   border-bottom-right-radius: 10px;
+  margin-right: auto;
+}
+
+#outer-c {
+  grid-area: 1/1/1/1;
 }
 
 .header {
@@ -60,9 +97,6 @@ body {
   color: var(--clr-white);
   border-right-color: var(--clr-background);
 }
-
-
-/* Below are custom created */
 
 .tool-tip {
   position: absolute;
@@ -77,19 +111,18 @@ body {
   width: 20em;
 }
 
-.card {
-  background-color: var(--clr-white);
-  box-shadow: 8px 8px 16px var(--bs-body-color)
+.form-control:focus {
+  border-color: var(--bs-body-color);
 }
 
-
+.card {
+  background-color: var(--clr-white);
+  box-shadow: 8px 8px 16px var(--bs-body-color);
+  position: absolute;
+}
 
 .card.form-view {
 position: absolute;
-}
-
-.form-section {
-  /* margin: 26px 0; */
 }
 
 .form-label {
@@ -102,10 +135,8 @@ position: absolute;
 }
 
 .error-field {
-  /* border-danger */
   border-color: red;
 }
-
 
 .error-text {
   font-size: .9em;
@@ -118,6 +149,6 @@ position: absolute;
 }
 
 .table-container {
-
+  position: absolute;
   width: 648px;
 }

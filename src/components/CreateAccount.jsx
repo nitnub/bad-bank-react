@@ -1,8 +1,9 @@
 import BankForm from './Form/BankForm';
 import BankModal from './BankModal';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import UserContext from '../contexts/UserContext';
+import { setActiveNavLink } from '../utils/util';
 function CreateAccount() {
   const context = useContext(UserContext);
   const [initialAccount, setInitialAccount] = useState(true);
@@ -12,6 +13,11 @@ function CreateAccount() {
     header: '',
     body: '',
   });
+
+  useEffect(() => {
+    setActiveNavLink('nav-create-account')
+  },[])
+  
   console.log('accessing CreateAccount...');
   console.log('Context: ', context);
 

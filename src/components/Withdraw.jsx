@@ -1,12 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserContext from '../contexts/UserContext';
 import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
 import getCurrentUser from '../utils/getCurrentUser';
-import { decrementUserBalance } from '../utils/util';
+import { decrementUserBalance, setActiveNavLink } from '../utils/util';
 
 function Withdraw() {
+
+  useEffect(() => {
+    setActiveNavLink('nav-withdraw')
+  },[])
+
   const [modalVisible, setModalVisible] = useState(false);
   // set to lower case to avoid Unknown Prop Warning
   const [modalmessage, setModalMessage] = useState({

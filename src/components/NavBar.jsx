@@ -20,16 +20,19 @@ function NavBar() {
     delay: { show: 250, hide: 300 },
     overlay: renderTooltip,
   };
-  // className="tooltip-container"
-  // placement="bottom"
-  // delay={{ show: 250, hide: 300 }}
-  // overlay={renderTooltip}
+
 
   return (
-    // <Navbar className="nav-bar" bg="light" expand="lg">
     <Navbar className="nav-bar" variant="dark" expand="lg">
-      <Container className="nav-bar">
+      <Container id="nav-bar-container" className="nav-bar">
+
+      <OverlayTrigger
+              {...tooltipProps}
+              overlay={renderTooltip('Return to home screen')}
+            >
         <Navbar.Brand id="nav-home" href="#">Bad Bank</Navbar.Brand>
+        </OverlayTrigger>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

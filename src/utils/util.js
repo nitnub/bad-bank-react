@@ -30,7 +30,6 @@ export const decrementUserBalance = (context, amount) => {
 };
 
 export const updateUserBalance = (context, amount) => {
-  // const context = useContext(UserContext);
   const currentUser = getCurrentUser(context);
   const { id } = currentUser;
   context.users[id].balance += Number(amount);
@@ -45,13 +44,22 @@ export const intToCurrency = (int) => {
   return formatter.format(int);
 };
 
-export const updateHeader = (currentPage) => {
-  const home = document.getElementById('nav-home');
-  const createAccount = document.getElementById('nav-create-account');
-  const withdraw = document.getElementById('nav-withdraw');
-  const deposit = document.getElementById('nav-deposit');
-  const allData = document.getElementById('nav-all-data');
-  const pageObj = { home, createAccount, withdraw, deposit, allData };
+export const setActiveNavLink = (navId) => {
+  const headerIdList = [
+    'nav-home',
+    'nav-create-account',
+    'nav-withdraw',
+    'nav-deposit',
+    'nav-all-data',
+  ];
+  const elements = headerIdList.map((id) => {
+    return document.getElementById(id);
+  });
+
+  elements.forEach((element) => {
+    element.id === navId
+      ? element.classList.add('active')
+      : element.classList.remove('active');
+  });
 };
 
-// export { getCurrentUser, getCurrentUserBalance, updateCurrentUserBalance }

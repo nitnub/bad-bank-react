@@ -58,7 +58,7 @@ function BankForm(props) {
                 </>
               )}
               <div className="btn-container">
-                <button className="btn btn-primary" 
+                <button className="btn btn-dark" 
                 disabled={isDisabled(formik.values)}
                 type="submit">
                   {props.buttonText ? props.buttonText : 'Submit'}

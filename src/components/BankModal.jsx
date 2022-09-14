@@ -1,12 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import React, { useState } from 'react';
 const BankModal = (props) => {
- console.log(props)
  const { modalmessage, onHide } = props;
   return (
 <>
-
 
 <Modal
       {...props}
@@ -25,9 +22,9 @@ const BankModal = (props) => {
         <p>
           {modalmessage.body}
         </p>
-      </Modal.Body>
+      </Modal.Body> 
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button className={"btn-dark"} onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
     </>
