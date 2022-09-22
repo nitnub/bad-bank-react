@@ -19,7 +19,6 @@ function Home() {
         <Card.Title>Welcome to the bank</Card.Title>
         <Card.Text>For all your banking needs</Card.Text>
           <Card.Img className="img-home" src={logoPath} />
-          {/* <img src="bank.png" />   */}
         </Card.Body>
       </Card>
     </div>

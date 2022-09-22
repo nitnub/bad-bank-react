@@ -1,11 +1,27 @@
 import { useContext } from 'react';
 import UserContext from '../contexts/UserContext';
 
-// class Helper {
-//   constructor() {
-//     this.context = useContext(UserContext);
-//   }
-// }
+
+
+export const testMode = (initialState) => {
+  if (initialState) {
+
+    console.log('Starting test mode...');
+    initialState.currentUser = 4;
+    for (let i = 0; i < 10; i++) {
+      initialState.users.push({
+        id: i,
+        name: 'John Smith',
+        email: 'jsmith@abcd.com',
+        password: 'myPass123',
+        balance: 1000,
+      });
+    }
+  // }
+  }
+  return initialState;
+ }
+
 
 export const getCurrentUser = (context) => {
   const [currentUser] = context.users.filter(
@@ -63,3 +79,10 @@ export const setActiveNavLink = (navId) => {
   });
 };
 
+export const setHeaderHeight = () => {
+  let targetHeight =
+      document.getElementsByClassName('content-header')[0].clientHeight;
+
+    const headerSpan = document.getElementById('header-span');
+    headerSpan.style.height = `${targetHeight}px`;
+}
