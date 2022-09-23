@@ -39,12 +39,14 @@ function Deposit() {
           depositAmount
         )} has been deposited into your account. Your new balance is ${intToCurrency(
           getUserBalance(context)
-        )}`,
+        )}.`,
       };
     });
     setModalVisible(() => true);
   };
 
+
+  
   return (
     // <div className="page-container">
     <div id="main-content" className="main-content">
