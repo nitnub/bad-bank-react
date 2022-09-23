@@ -58,7 +58,7 @@ function Deposit() {
     <div id="main-content" className="main-content">
       {/* <div className="header-container"> */}
         
-      <h1 className="content-header">Deposit</h1>
+      <h1 role= "heading" className="content-header">Deposit</h1>
       
       {/* </div> */}
       <BankForm showAmount showname handler={handler} transferType="Deposit" />

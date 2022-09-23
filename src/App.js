@@ -23,14 +23,14 @@ function App() {
   // let initialState = { users: [] };
   if (testMode) {
     console.log('Starting test mode...');
-    initialState.currentUser = '';
+    initialState.currentUser = 0;
     for (let i = 0; i < 10; i++) {
       initialState.users.push({
         id: i,
         name: 'John Smith',
         email: 'jsmith@abcd.com',
         password: 'AAbb!!11',
-        balance: 1000,
+        balance: Math.floor(Math.random() * 10000),
       });
     }
   }

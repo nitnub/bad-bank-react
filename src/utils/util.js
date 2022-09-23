@@ -84,6 +84,20 @@ export const setActiveNavLink = (navId) => {
   });
 };
 
+export     const userVerified = (userEmail, userPassword, context) => {
+  let matchingUser = false;
+  context.users.forEach((customer) => {
+    if (
+      customer.email === userEmail &&
+      customer.password === userPassword
+    ) {
+      matchingUser = true;
+      context.currentUser = customer.id;
+    }
+  });
+  return matchingUser;
+};
+
 export const setHeaderHeight = () => {
   let targetHeight =
       document.getElementsByClassName('content-header')[0].clientHeight;

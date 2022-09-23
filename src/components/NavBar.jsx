@@ -1,5 +1,7 @@
-import { forwardRef } from 'react';
+import { forwardRef, useContext } from 'react';
 import SignInButton from './Form/SignInButton';
+
+import getCurrentUser from '../utils/getCurrentUser';
 import {
   Button,
   Container,
@@ -10,7 +12,11 @@ import {
   Tooltip,
 } from 'react-bootstrap';
 
+
 function NavBar() {
+
+
+  // console.log('context', context)
   const renderTooltip = (message) => (
     <Tooltip className="tool-tip">{message}</Tooltip>
   );
