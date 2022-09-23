@@ -12,7 +12,7 @@ function Home() {
   console.log('accessing Home...');
   return (
     <div className="main-content">
-       <h1 className="content-header">Home</h1>
+       <h1 role= "heading" className="content-header">Home</h1>
       <Card>
         
         <Card.Body>

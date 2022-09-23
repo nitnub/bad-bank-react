@@ -78,9 +78,9 @@ export const setActiveNavLink = (navId) => {
   });
 
   elements.forEach((element) => {
-    element.id === navId
-      ? element.classList.add('active')
-      : element.classList.remove('active');
+    element?.id === navId
+      ? element?.classList.add('active')
+      : element?.classList.remove('active');
   });
 };
 

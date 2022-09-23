@@ -11,14 +11,6 @@ import {
 } from '../utils/util';
 
 function Deposit() {
-  //  window.addEventListener('resize', () =>{
-  //   const targetWidth = document.getElementById('nav-bar-container').clientWidth
-
-  //   const mainContent = document.getElementsByClassName('main-content');
-  //   // const mainContent = document.getElementById('main-content');
-
-  //   mainContent.style.width = targetWidth == null ? `100vw`: `${targetWidth}px`;
-  // })
 
   useEffect(() => {
     setActiveNavLink('nav-deposit');
@@ -58,7 +50,7 @@ function Deposit() {
     <div id="main-content" className="main-content">
       {/* <div className="header-container"> */}
         
-      <h1 role= "heading" className="content-header">Deposit</h1>
+      <h1 className="content-header">Deposit</h1>
       
       {/* </div> */}
       <BankForm showAmount showname handler={handler} transferType="Deposit" />
