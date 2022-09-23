@@ -10,6 +10,8 @@ import Deposit from './components/Deposit';
 import Home from './components/Home';
 import { Container } from 'react-bootstrap';
 import { setHeaderHeight } from './utils/util';
+import SignIn from './components/SignIn';
+
 function App() {
   // const UserContext = createContext(null);
   let initialState = {
@@ -61,6 +63,7 @@ function App() {
                 <Route path="/Withdraw/" element={<Withdraw />} />
                 <Route path="/Deposit/" element={<Deposit />} />
                 <Route path="/AllData/" element={<AllData />} />
+                <Route path="/SignIn/" element={<SignIn />} />
               </Routes>
             </UserContext.Provider>
           </Container>

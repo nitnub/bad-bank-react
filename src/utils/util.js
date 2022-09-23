@@ -14,7 +14,7 @@ export const testMode = (initialState) => {
         name: 'John Smith',
         email: 'jsmith@abcd.com',
         password: 'myPass123',
-        balance: 1000,
+        balance: Math.floor(Math.random() * 10000),
       });
     }
   // }
@@ -29,6 +29,11 @@ export const getCurrentUser = (context) => {
   );
   return currentUser;
 };
+
+export const setCurrentUser = (int) => {
+  const utilContext = useContext(UserContext);
+  context.currentUser = int;
+}
 
 export const getUserBalance = (context) => {
   const [currentUser] = context.users.filter(
