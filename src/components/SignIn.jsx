@@ -30,27 +30,47 @@ function SignIn() {
     context.users.push(newUser);
   };
   const handler = (args) => {
-    
-    console.log(args)
+    const verifyUser = (userEmail, userPassword) => {
+      let matchingUser = false;
+      context.users.forEach((customer) => {
+        
+        if (customer.email === userEmail && customer.password === userPassword) {
+          matchingUser = true;
+          context.currentUser = customer.id;
+        }
+
+       
+      })
+      return matchingUser;
+    }
+    if (verifyUser(args.email, args.password)) {
+
+
+      setModalMessage((modalmessage) => {
+        return {
+          ...modalmessage,
+          title: 'Success!',
+          header: `User ${args.email} created`,
+          body: ``,
+        };
+      });
+  
+      console.log(args);
+  
+      console.log('Context: ', context);
+      setInitialAccount(() => false);
+      setModalVisible(() => true);
+
+
+
+    }
+    console.log('args', args)
+    console.log('context', context)
 
     console.log('Logging from Sign In...');
+    
 
-
-
-    setModalMessage((modalmessage) => {
-      return {
-        ...modalmessage,
-        title: 'Success!',
-        header: `User ${args.email} created`,
-        body: ``,
-      };
-    });
-
-    console.log(args);
-
-    console.log('Context: ', context);
-    setInitialAccount(() => false);
-    setModalVisible(() => true);
+ 
   };
 
 

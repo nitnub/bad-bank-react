@@ -30,8 +30,8 @@ export const getCurrentUser = (context) => {
   return currentUser;
 };
 
-export const setCurrentUser = (int) => {
-  const utilContext = useContext(UserContext);
+export const setCurrentUser = (context, int) => {
+  
   context.currentUser = int;
 }
 

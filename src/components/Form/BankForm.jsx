@@ -9,16 +9,16 @@ import getValidationSchema from '../../utils/getValidationSchema';
 import getInitialValues from '../../utils/getInitialValues';
 
 function BankForm(props) {
-
-
   const context = useContext(UserContext);
   const validationSchema = Yup.object(getValidationSchema(props));
   const isDisabled = (values) => {
     let disabled = false;
-    Object.keys(values).forEach((value) => values[value].length === 0 ? disabled = true : null)
+    Object.keys(values).forEach((value) =>
+      values[value].length === 0 ? (disabled = true) : null
+    );
     return disabled;
-  }
- 
+  };
+
   return (
     <div className="card form-view">
       <div className="card-body">
@@ -36,16 +36,12 @@ function BankForm(props) {
                 <FormElement formik={formik} label="Name" type="text" />
               )}
 
-              {props.showPassword && (
-                <FormElement formik={formik} label="Password" type="password" />
+              {props.showEmail && (
+                <FormElement formik={formik} label="Email" type="email" />
               )}
 
-              {props.showEmail && (
-                <FormElement
-                  formik={formik}
-                  label="Email"
-                  type="email"
-                />
+              {props.showPassword && (
+                <FormElement formik={formik} label="Password" type="password" />
               )}
 
               {props.showAmount && (
@@ -54,13 +50,19 @@ function BankForm(props) {
                     <h2>Balance</h2>
                     <h3>{intToCurrency(getCurrentUser(context).balance)}</h3>
                   </div>
-                  <FormElement formik={formik} label={props.transferType} type="number" />
+                  <FormElement
+                    formik={formik}
+                    label={props.transferType}
+                    type="number"
+                  />
                 </>
               )}
               <div className="btn-container">
-                <button className="btn btn-dark" 
-                disabled={isDisabled(formik.values)}
-                type="submit">
+                <button
+                  className="btn btn-dark"
+                  disabled={isDisabled(formik.values)}
+                  type="submit"
+                >
                   {props.buttonText ? props.buttonText : 'Submit'}
                 </button>
               </div>

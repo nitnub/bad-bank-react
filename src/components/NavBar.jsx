@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import SignInButton from './Form/SignInButton';
 import {
   Button,
   Container,
@@ -64,8 +65,10 @@ function NavBar() {
               <Nav.Link id="nav-all-data" href="#/AllData/">All Data</Nav.Link>
             </OverlayTrigger>
           </Nav>
+          <SignInButton title={'Sign In'}/>
         </Navbar.Collapse>
       </Container>
+      
     </Navbar>
   );
 }

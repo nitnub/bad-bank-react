@@ -15,7 +15,7 @@ import SignIn from './components/SignIn';
 function App() {
   // const UserContext = createContext(null);
   let initialState = {
-    currentUser: 0,
+    currentUser: '',
     users: [],
   };
 
@@ -23,13 +23,13 @@ function App() {
   // let initialState = { users: [] };
   if (testMode) {
     console.log('Starting test mode...');
-    initialState.currentUser = 4;
+    initialState.currentUser = '';
     for (let i = 0; i < 10; i++) {
       initialState.users.push({
         id: i,
         name: 'John Smith',
         email: 'jsmith@abcd.com',
-        password: 'myPass123',
+        password: 'AAbb!!11',
         balance: 1000,
       });
     }
