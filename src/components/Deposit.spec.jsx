@@ -32,7 +32,7 @@ const renderDeposit = () => {
 
 test('Renders Deposit page title correctly', () => {
   renderDeposit();
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+  expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(
     'Deposit'
   );
 });
@@ -43,7 +43,7 @@ test('Deposit updates balance amount', async () => {
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
-    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 3 }).textContent).toBe(
       '$1,100'
     );
   });
@@ -65,11 +65,12 @@ test('Confirmation modal displays with the correct deposit amount', async () => 
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
-    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 4 }).textContent).toBe(
       '$1 deposited'
     );
   });
 });
+
 
 test('Confirmation modal displays with the correct deposit message', async () => {
   renderDeposit();
@@ -85,20 +86,17 @@ test('Confirmation modal displays with the correct deposit message', async () =>
   });
 });
 
-
-// Validation failure tests
+ 
+// Validation tests
 
 test('Validation check fails when $0 is entered', async () => {
   renderDeposit();
   userEvent.type(screen.getByRole('spinbutton'), '0');
   userEvent.click(screen.getByRole('button'));
 
-
   await waitFor(() => {
     expect(
-      screen.getByText(
-        'Amount must be greater than zero'
-      )
+      screen.getByText('Amount must be greater than zero')
     ).toBeInTheDocument();
   });
 });
@@ -108,12 +106,9 @@ test('Validation check fails when a negative number is entered', async () => {
   userEvent.type(screen.getByRole('spinbutton'), '-1');
   userEvent.click(screen.getByRole('button'));
 
-
   await waitFor(() => {
     expect(
-      screen.getByText(
-        'Amount must be greater than zero'
-      )
+      screen.getByText('Amount must be greater than zero')
     ).toBeInTheDocument();
   });
 });

@@ -30,7 +30,7 @@ const renderDeposit = () => {
 
 test('Renders Withdraw page title correctly', () => {
   renderDeposit();
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+  expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(
     'Withdraw'
   );
 });
@@ -41,65 +41,66 @@ test('Withdraw updates balance amount', async () => {
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
-    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 3 }).textContent).toBe(
       '$900'
     );
   });
 });
 
-// test('Confirmation modal displays the Success banner', async () => {
-//   renderDeposit();
-//   userEvent.type(screen.getByRole('spinbutton'), '1');
-//   userEvent.click(screen.getByRole('button'));
+test('Confirmation modal displays the Success banner', async () => {
+  renderDeposit();
+  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.click(screen.getByRole('button'));
 
-//   await waitFor(() => {
-//     expect(screen.getByText('Success!!')).toBeInTheDocument();
-//   });
-// });
-
-// test('Confirmation modal displays with the correct withdrawal amount', async () => {
-//   renderDeposit();
-//   userEvent.type(screen.getByRole('spinbutton'), '1');
-//   userEvent.click(screen.getByRole('button'));
-
-//   await waitFor(() => {
-//     expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
-//       '$1 deposited'
-//     );
-//   });
-// });
-
-// test('Confirmation modal displays with the correct withdrawal message', async () => {
-//   renderDeposit();
-//   userEvent.type(screen.getByRole('spinbutton'), '1');
-//   userEvent.click(screen.getByRole('button'));
-
-//   await waitFor(() => {
-//     expect(
-//       screen.getByText(
-//         '$1 has been deposited into your account. Your new balance is $1,001.'
-//       )
-//     ).toBeInTheDocument();
-//   });
-// });
+  await waitFor(() => {
+    expect(screen.getByText('Success!')).toBeInTheDocument();
+  });
+});
 
 
-// // Validation failure tests
+test('Confirmation modal displays with the correct withdrawal amount', async () => {
+  renderDeposit();
+  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.click(screen.getByRole('button'));
 
-// test('Validation check fails when $0 is entered', async () => {
-//   renderDeposit();
-//   userEvent.type(screen.getByRole('spinbutton'), '0');
-//   userEvent.click(screen.getByRole('button'));
+  await waitFor(() => {
+    expect(screen.getByRole('heading', { level: 4 }).textContent).toBe(
+      '$1 withdrawn'
+    );
+  });
+});
+
+test('Confirmation modal displays with the correct withdrawal message', async () => {
+  renderDeposit();
+  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.click(screen.getByRole('button'));
+
+  await waitFor(() => {
+    expect(
+      screen.getByText(
+        '$1 has been withdrawn from your account. Your remaining balance is $999.'
+      )
+    ).toBeInTheDocument();
+  });
+});
 
 
-//   await waitFor(() => {
-//     expect(
-//       screen.getByText(
-//         'Amount must be greater than zeroa'
-//       )
-//     ).toBeInTheDocument();
-//   });
-// });
+// // Validation tests
+
+test('Validation check fails when $0 is entered', async () => {
+  renderDeposit();
+  userEvent.type(screen.getByRole('spinbutton'), '0');
+  userEvent.click(screen.getByRole('button'));
+
+
+  await waitFor(() => {
+    expect(
+      screen.getByText(
+        'Amount must be greater than zero'
+      )
+    ).toBeInTheDocument();
+  });
+});
 
 // test('Validation check fails when a negative number is entered', async () => {
 //   renderDeposit();

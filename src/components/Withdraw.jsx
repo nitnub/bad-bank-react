@@ -37,7 +37,7 @@ function Withdraw() {
             withdrawAmount
           )} has been withdrawn from your account. Your remaining balance is ${intToCurrency(
             currentUser.balance
-          )}`,
+          )}.`,
         };
       });
       setModalVisible(() => true);
