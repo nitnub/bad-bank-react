@@ -30,7 +30,7 @@ function App() {
       initialState.users.push({
         id: i,
         name: 'John Smith',
-        email: 'jsmith@abcd.com',
+        email: `jsmith${i}@abcd.com`,
         password: 'AAbb!!11',
         balance,
         history: [{dateTime, balance}]

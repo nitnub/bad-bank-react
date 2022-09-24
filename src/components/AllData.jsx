@@ -9,8 +9,7 @@ function AllData() {
     setActiveNavLink('nav-all-data');
   }, []);
 
-  const ctx = useContext(UserContext);
-  console.log(ctx.users);
+  const context = useContext(UserContext);
   return (
     <div className="main-content">
       <h1 className="content-header">All Data</h1>
@@ -18,21 +17,18 @@ function AllData() {
       <div className="card">
         <table className="table">
           <thead className="header">
-            <tr>
+            <tr style={{ textAlign: 'center' }}>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Balance</th>
-              <th className="header" scope="col">
-                Password
-              </th>
+              <th scope="col">Password</th>
             </tr>
           </thead>
           <tbody>
-            {ctx.users.map((user) => {
+            {context.users.map((user) => {
               return (
                 <tr key={user.id}>
-                  {/* <th scope="row">1</th> */}
                   <td>{user.id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>

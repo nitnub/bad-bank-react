@@ -4,7 +4,7 @@ import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
 import getCurrentUser from '../utils/getCurrentUser';
-import { decrementUserBalance, setActiveNavLink } from '../utils/util';
+import { decrementUserBalance, setActiveNavLink, updateUserHistory } from '../utils/util';
 
 function Withdraw() {
 
@@ -23,11 +23,11 @@ function Withdraw() {
   const handler = () => {
     const target = document.getElementById('amount');
     const withdrawAmount = target.value;
-
     const currentUser = getCurrentUser(context);
 
     if (currentUser.balance >= withdrawAmount) {
       decrementUserBalance(context, withdrawAmount);
+
       setModalMessage((modalmessage) => {
         return {
           ...modalmessage,
@@ -41,6 +41,7 @@ function Withdraw() {
         };
       });
       setModalVisible(() => true);
+
     } else {
       setModalMessage((modalmessage) => {
         return {
@@ -54,6 +55,7 @@ function Withdraw() {
       });
       setModalVisible(() => true);
     }
+    updateUserHistory('withdrawal', withdrawAmount, context)
   };
 
   return (

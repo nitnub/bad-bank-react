@@ -8,6 +8,7 @@ import {
   incrementUserBalance,
   intToCurrency,
   setActiveNavLink,
+  updateUserHistory,
 } from '../utils/util';
 
 function Deposit() {
@@ -29,7 +30,8 @@ function Deposit() {
     const target = document.getElementById('amount');
     const depositAmount = target.value;
     incrementUserBalance(context, depositAmount);
-
+    
+    
     setModalMessage((modalmessage) => {
       return {
         ...modalmessage,
@@ -43,6 +45,7 @@ function Deposit() {
       };
     });
     setModalVisible(() => true);
+    updateUserHistory('deposit', depositAmount, context)
   };
 
 

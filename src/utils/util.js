@@ -107,3 +107,18 @@ export const getTimeStamp = () => {
   let date = new Date();
   return date.toLocaleString()
 };
+
+export const updateUserHistory = (transferType, amount, context) => {
+  const contextCopy = context;
+  const tempUser = getCurrentUser(context);
+  const index = tempUser.id;
+  const newEntry = {
+    dateTime: getTimeStamp(),
+    [transferType]: amount,
+    balance: tempUser.balance,
+  }
+  tempUser.history.push(newEntry);
+  contextCopy.users.splice(index, 1, tempUser);
+  context = contextCopy
+
+}
