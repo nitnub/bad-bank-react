@@ -102,17 +102,17 @@ test('Validation check fails when $0 is entered', async () => {
   });
 });
 
-// test('Validation check fails when a negative number is entered', async () => {
-//   renderDeposit();
-//   userEvent.type(screen.getByRole('spinbutton'), '-1');
-//   userEvent.click(screen.getByRole('button'));
+test('Validation check fails when a negative number is entered', async () => {
+  renderDeposit();
+  userEvent.type(screen.getByRole('spinbutton'), '-1');
+  userEvent.click(screen.getByRole('button'));
 
 
-//   await waitFor(() => {
-//     expect(
-//       screen.getByText(
-//         'Amount must be greater than zer'
-//       )
-//     ).toBeInTheDocument();
-//   });
-// });
+  await waitFor(() => {
+    expect(
+      screen.getByText(
+        'Amount must be greater than zero'
+      )
+    ).toBeInTheDocument();
+  });
+});
