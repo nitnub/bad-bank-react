@@ -3,17 +3,15 @@ import UserContext from '../contexts/UserContext';
 import intToCurrency from '../utils/intToCurrency';
 import { setActiveNavLink } from '../utils/util';
 function AllData() {
-  console.log('accessing AllData...');
+  const context = useContext(UserContext);
 
   useEffect(() => {
     setActiveNavLink('nav-all-data');
   }, []);
 
-  const context = useContext(UserContext);
   return (
     <div className="main-content">
       <h1 className="content-header">All Data</h1>
-
       <div className="card">
         <table className="table">
           <thead className="header">

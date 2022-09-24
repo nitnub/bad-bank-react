@@ -6,7 +6,7 @@ import UserContext from '../contexts/UserContext';
 import { getCurrentUser, setActiveNavLink, userVerified } from '../utils/util';
 function SignIn() {
   const context = useContext(UserContext);
- 
+
   const [modalVisible, setModalVisible] = useState(false);
   const [modalmessage, setModalMessage] = useState({
     title: '',
@@ -18,9 +18,9 @@ function SignIn() {
     setActiveNavLink(''); // deactivate all
   }, []);
 
-  console.log('accessing Sign In...');
   const handler = ({ email, password }) => {
-    const name = getCurrentUser(context).name; 
+    const name = getCurrentUser(context).name;
+
     if (userVerified(email, password, context)) {
       setModalMessage((modalmessage) => {
         return {
@@ -30,9 +30,7 @@ function SignIn() {
           body: ``,
         };
       });
-
       setModalVisible(() => true);
-
     } else {
       setModalMessage((modalmessage) => {
         return {
@@ -42,7 +40,6 @@ function SignIn() {
           body: `Please try again.`,
         };
       });
-    
       setModalVisible(() => true);
     }
   };

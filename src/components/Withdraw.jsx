@@ -4,13 +4,16 @@ import BankForm from './Form/BankForm';
 import intToCurrency from '../utils/intToCurrency';
 import BankModal from './BankModal';
 import getCurrentUser from '../utils/getCurrentUser';
-import { decrementUserBalance, setActiveNavLink, updateUserHistory } from '../utils/util';
+import {
+  decrementUserBalance,
+  setActiveNavLink,
+  updateUserHistory,
+} from '../utils/util';
 
 function Withdraw() {
-
   useEffect(() => {
-    setActiveNavLink('nav-withdraw')
-  },[])
+    setActiveNavLink('nav-withdraw');
+  }, []);
 
   const [modalVisible, setModalVisible] = useState(false);
   // set to lower case to avoid Unknown Prop Warning
@@ -27,7 +30,6 @@ function Withdraw() {
 
     if (currentUser.balance >= withdrawAmount) {
       decrementUserBalance(context, withdrawAmount);
-
       setModalMessage((modalmessage) => {
         return {
           ...modalmessage,
@@ -41,7 +43,6 @@ function Withdraw() {
         };
       });
       setModalVisible(() => true);
-
     } else {
       setModalMessage((modalmessage) => {
         return {
@@ -55,7 +56,8 @@ function Withdraw() {
       });
       setModalVisible(() => true);
     }
-    updateUserHistory('withdrawal', withdrawAmount, context)
+    
+    updateUserHistory('withdrawal', withdrawAmount, context);
   };
 
   return (

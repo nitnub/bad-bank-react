@@ -10,7 +10,7 @@ describe('test getCurrentUser', () => {
          {id: 2, name: 'Steve Stevenson', email: 'steve@email.com', password: '!!22qqQQaa', balance: 1000}, 
          ],
     }
-  it('test123', () => {
+  it('gets expected user from user list', () => {
     expect(getCurrentUser(testContext)).toEqual({id: 1, name: 'Bob Smith', email: 'bob@email.com', password: '!!22qqQQaa', balance: 1000});
   })
 })

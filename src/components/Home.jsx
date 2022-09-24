@@ -2,23 +2,20 @@ import { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import { setActiveNavLink } from '../utils/util';
 function Home() {
-
+  const logoPath = process.env.PUBLIC_URL + '/img/bank.png';
 
   useEffect(() => {
     setActiveNavLink('nav-home')
   },[])
 
-  const logoPath = process.env.PUBLIC_URL + '/img/bank.png';
-  console.log('accessing Home...');
   return (
     <div className="main-content">
-       <h1 role= "heading" className="content-header">Home</h1>
+       <h1 className="content-header">Home</h1>
       <Card>
-        
         <Card.Body>
-        <Card.Title>Welcome to the bank</Card.Title>
+        <Card.Title>Welcome to the Bad Bank</Card.Title>
         <Card.Text>For all your banking needs</Card.Text>
-          <Card.Img className="img-home" src={logoPath} />
+          <Card.Img className="img-home" src={logoPath} alt="piggy bank with coins"/>
         </Card.Body>
       </Card>
     </div>

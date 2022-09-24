@@ -18,20 +18,14 @@ function CreateAccount() {
     setActiveNavLink('nav-create-account')
   },[])
   
-  console.log('accessing CreateAccount...');
-  console.log('Context: ', context);
-
-  const addUser = (args) => {
+  const addUserToContext = (args) => {
     const id = context.users.length;
-    // const { name }
-    // const email = args['email-address']
     const newUser = { id, ...args, balance: 0 };
-
     context.users.push(newUser);
   };
+
   const handler = (args) => {
-    addUser(args);
-    console.log('Logging from CreateAccount...');
+    addUserToContext(args);
     setModalMessage((modalmessage) => {
       return {
         ...modalmessage,

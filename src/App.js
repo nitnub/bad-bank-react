@@ -1,8 +1,7 @@
 import './App.css';
-import { useEffect } from 'react';
 import UserContext from './contexts/UserContext';
 import NavBar from './components/NavBar';
-import { HashRouter, Link, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Withdraw from './components/Withdraw';
 import TransactionHistory from './components/TransactionHistory';
 import AllData from './components/AllData';
@@ -10,38 +9,25 @@ import CreateAccount from './components/CreateAccount';
 import Deposit from './components/Deposit';
 import Home from './components/Home';
 import { Container } from 'react-bootstrap';
-import { getTimeStamp, setHeaderHeight } from './utils/util';
+import { setHeaderHeight, testModeState } from './utils/util';
 import SignIn from './components/SignIn';
 
 function App() {
-  // const UserContext = createContext(null);
   let initialState = {
     currentUser: 0,
     users: [],
   };
 
+  // Set testMode to true to pre-populate 5 dummy customers with random balances
   const testMode = true;
   if (testMode) {
-    console.log('Starting test mode...');
-    initialState.currentUser = 0;
-    for (let i = 0; i < 5; i++) {
-      const balance = Math.floor(Math.random() * 10000);
-      const dateTime = getTimeStamp();
-      initialState.users.push({
-        id: i,
-        name: 'John Smith',
-        email: `jsmith${i}@abcd.com`,
-        password: 'AAbb!!11',
-        balance,
-        history: [{dateTime, balance}]
-      });
-    }
+    initialState = testModeState();
   }
 
+  // Resize header on page load and page resize
   window.addEventListener('load', () => {
     setHeaderHeight();
   });
-
   window.addEventListener('resize', () => {
     setHeaderHeight();
   });
@@ -58,8 +44,6 @@ function App() {
         <div id="outer-c">
           <Container className="">
             <UserContext.Provider value={initialState}>
-              {/* <Container id="nav-bar-container" className="nav-bar"> */}
-
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/CreateAccount" element={<CreateAccount />} />

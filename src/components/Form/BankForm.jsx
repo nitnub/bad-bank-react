@@ -11,6 +11,7 @@ import getInitialValues from '../../utils/getInitialValues';
 function BankForm(props) {
   const context = useContext(UserContext);
   const validationSchema = Yup.object(getValidationSchema(props));
+
   const isDisabled = (values) => {
     let disabled = false;
     Object.keys(values).forEach((value) =>
@@ -50,12 +51,7 @@ function BankForm(props) {
                     <h2>Balance</h2>
                     <h3>{intToCurrency(getCurrentUser(context).balance)}</h3>
                   </div>
-                  <FormElement
-                    formik={formik}
-                    label={props.transferType}
-                    // type="number"
-                    // min="0" step="1"
-                  />
+                  <FormElement formik={formik} label={props.transferType} />
                 </>
               )}
               <div className="btn-container">

@@ -4,18 +4,15 @@ import getCurrentUser from '../utils/getCurrentUser';
 import intToCurrency from '../utils/intToCurrency';
 import { setActiveNavLink, getUserHistory} from '../utils/util';
 function TransactionHistory() {
-  console.log('accessing Transaction History...');
-  
+  const context = useContext(UserContext);
 
   useEffect(() => {
     setActiveNavLink('nav-transaction-history');
   }, []);
 
-  const context = useContext(UserContext);
-  console.log(getUserHistory(context));
   return (
     <div className="main-content">
-      <h1 className="content-header">{getCurrentUser(context).name}'s Transactions</h1>
+      <h1 className="content-header">Statement for {getCurrentUser(context).name}</h1>
 
       <div className="card">
         <table className="table">

@@ -6,5 +6,4 @@ function currencyToInt(string) {
   return Number(numAsString);
 }
 
-// module.exports = currencyToInt ;
 export default currencyToInt;

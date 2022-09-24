@@ -13,7 +13,7 @@ const sampleUsers = {
         { dateTime: 'dateTime', withdrawal: 100, balance: 10000 },
         { dateTime: 'dateTime', withdrawal: 5000, balance: 5000 },
         { dateTime: 'dateTime', deposit: 1100, balance: 6100 },
-        { dateTime: 'dateTime', withdrawal: 0, deposit: 100, balance: 6200 },
+        { dateTime: 'dateTime', withdrawal: 0, deposit: 101, balance: 6201 },
       ],
     },
     {
@@ -39,7 +39,7 @@ const sampleUsers = {
         { dateTime: 'dateTime', withdrawal: 100, balance: 10000 },
         { dateTime: 'dateTime', withdrawal: 5000, balance: 5000 },
         { dateTime: 'dateTime', deposit: 1100, balance: 6100 },
-        { dateTime: 'dateTime', withdrawal: 0, deposit: 100, balance: 6200 },
+        { dateTime: 'dateTime', withdrawal: 0, deposit: 107, balance: 6207 },
       ],
     },
   ],
@@ -47,7 +47,7 @@ const sampleUsers = {
 
 
 describe('test getUserHistory()', () => {
-  it('Pulls correct user\'s transaction history', () => {
+  it('pulls correct user\'s transaction history', () => {
     expect(getUserHistory(sampleUsers)).toEqual([
       { dateTime: 'dateTime', balance: 10000 },
       { dateTime: 'dateTime', deposit: 100, balance: 10100 },

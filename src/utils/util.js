@@ -1,20 +1,23 @@
-import { useContext } from 'react';
-import UserContext from '../contexts/UserContext';
+export const testModeState = () => {
+  console.log("Starting 'test mode' with 5 starter customers...");
 
-export const testMode = (initialState) => {
-  if (initialState) {
-    console.log('Starting test mode...');
-    initialState.currentUser = 4;
-    for (let i = 0; i < 10; i++) {
-      initialState.users.push({
-        id: i,
-        name: 'John Smith',
-        email: 'jsmith@abcd.com',
-        password: 'myPass123',
-        balance: Math.floor(Math.random() * 10000),
-      });
-    }
-    // }
+  let initialState = {
+    currentUser: 0,
+    users: [],
+  };
+
+  initialState.currentUser = 0;
+  for (let i = 0; i < 5; i++) {
+    const balance = Math.floor(Math.random() * 10000);
+    const dateTime = getTimeStamp();
+    initialState.users.push({
+      id: i,
+      name: `John Smith${i}`,
+      email: `jsmith${i}@abcd.com`,
+      password: `AAbb!!${i}${i}`,
+      balance,
+      history: [{ dateTime, balance }],
+    });
   }
   return initialState;
 };
@@ -105,7 +108,7 @@ export const setHeaderHeight = () => {
 
 export const getTimeStamp = () => {
   let date = new Date();
-  return date.toLocaleString()
+  return date.toLocaleString();
 };
 
 export const updateUserHistory = (transferType, amount, context) => {
@@ -116,9 +119,8 @@ export const updateUserHistory = (transferType, amount, context) => {
     dateTime: getTimeStamp(),
     [transferType]: amount,
     balance: tempUser.balance,
-  }
+  };
   tempUser.history.push(newEntry);
   contextCopy.users.splice(index, 1, tempUser);
-  context = contextCopy
-
-}
+  context = contextCopy;
+};
