@@ -1,11 +1,8 @@
 import { useContext } from 'react';
 import UserContext from '../contexts/UserContext';
 
-
-
 export const testMode = (initialState) => {
   if (initialState) {
-
     console.log('Starting test mode...');
     initialState.currentUser = 4;
     for (let i = 0; i < 10; i++) {
@@ -17,11 +14,10 @@ export const testMode = (initialState) => {
         balance: Math.floor(Math.random() * 10000),
       });
     }
-  // }
+    // }
   }
   return initialState;
- }
-
+};
 
 export const getCurrentUser = (context) => {
   const [currentUser] = context.users.filter(
@@ -31,9 +27,8 @@ export const getCurrentUser = (context) => {
 };
 
 export const setCurrentUser = (context, int) => {
-  
   context.currentUser = int;
-}
+};
 
 export const getUserBalance = (context) => {
   const [currentUser] = context.users.filter(
@@ -56,6 +51,10 @@ export const updateUserBalance = (context, amount) => {
   context.users[id].balance += Number(amount);
 };
 
+export const getUserHistory = (context) => {
+  return getCurrentUser(context).history;
+};
+
 export const intToCurrency = (int) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -71,6 +70,7 @@ export const setActiveNavLink = (navId) => {
     'nav-create-account',
     'nav-withdraw',
     'nav-deposit',
+    'nav-transaction-history',
     'nav-all-data',
   ];
   const elements = headerIdList.map((id) => {
@@ -84,13 +84,10 @@ export const setActiveNavLink = (navId) => {
   });
 };
 
-export     const userVerified = (userEmail, userPassword, context) => {
+export const userVerified = (userEmail, userPassword, context) => {
   let matchingUser = false;
   context.users.forEach((customer) => {
-    if (
-      customer.email === userEmail &&
-      customer.password === userPassword
-    ) {
+    if (customer.email === userEmail && customer.password === userPassword) {
       matchingUser = true;
       context.currentUser = customer.id;
     }
@@ -100,8 +97,13 @@ export     const userVerified = (userEmail, userPassword, context) => {
 
 export const setHeaderHeight = () => {
   let targetHeight =
-      document.getElementsByClassName('content-header')[0].clientHeight;
+    document.getElementsByClassName('content-header')[0].clientHeight;
 
-    const headerSpan = document.getElementById('header-span');
-    headerSpan.style.height = `${targetHeight}px`;
-}
+  const headerSpan = document.getElementById('header-span');
+  headerSpan.style.height = `${targetHeight}px`;
+};
+
+export const getTimeStamp = () => {
+  let date = new Date();
+  return date.toLocaleString()
+};

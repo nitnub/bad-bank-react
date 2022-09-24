@@ -66,6 +66,13 @@ function NavBar() {
 
             <OverlayTrigger
               {...tooltipProps}
+              overlay={renderTooltip('Check my transaction history')}
+            >
+              <Nav.Link id="nav-transaction-history" href="#/TransactionHistory/">Transaction History</Nav.Link>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              {...tooltipProps}
               overlay={renderTooltip('View all customer data')}
             >
               <Nav.Link id="nav-all-data" href="#/AllData/">All Data</Nav.Link>
