@@ -78,7 +78,7 @@ function NavBar() {
               <Nav.Link id="nav-all-data" href="#/AllData/">All Data</Nav.Link>
             </OverlayTrigger>
           </Nav>
-          <SignInButton title={'Sign In'}/>
+          <SignInButton title={'Change User'}/>
         </Navbar.Collapse>
       </Container>
       

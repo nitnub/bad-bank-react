@@ -24,7 +24,7 @@ function App() {
   if (testMode) {
     console.log('Starting test mode...');
     initialState.currentUser = 0;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const balance = Math.floor(Math.random() * 10000);
       const dateTime = getTimeStamp();
       initialState.users.push({
