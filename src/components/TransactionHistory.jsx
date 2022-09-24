@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import UserContext from '../contexts/UserContext';
+import getCurrentUser from '../utils/getCurrentUser';
 import intToCurrency from '../utils/intToCurrency';
 import { setActiveNavLink, getUserHistory} from '../utils/util';
 function TransactionHistory() {
@@ -14,7 +15,7 @@ function TransactionHistory() {
   console.log(getUserHistory(context));
   return (
     <div className="main-content">
-      <h1 className="content-header">Transaction History</h1>
+      <h1 className="content-header">{getCurrentUser(context).name}'s Transactions</h1>
 
       <div className="card">
         <table className="table">

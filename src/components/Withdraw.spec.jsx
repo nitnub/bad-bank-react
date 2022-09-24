@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Withdraw from './Withdraw';
 import UserContext from '../contexts/UserContext';
 import userEvent from '@testing-library/user-event';
@@ -37,19 +33,17 @@ test('Renders Withdraw page title correctly', () => {
 
 test('Withdraw updates balance amount', async () => {
   renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '100');
+  userEvent.type(screen.getByRole('textbox'), '100');
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
-    expect(screen.getByRole('heading', { level: 3 }).textContent).toBe(
-      '$900'
-    );
+    expect(screen.getByRole('heading', { level: 3 }).textContent).toBe('$900');
   });
 });
 
 test('Confirmation modal displays the Success banner', async () => {
   renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.type(screen.getByRole('textbox'), '1');
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
@@ -57,10 +51,9 @@ test('Confirmation modal displays the Success banner', async () => {
   });
 });
 
-
 test('Confirmation modal displays with the correct withdrawal amount', async () => {
   renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.type(screen.getByRole('textbox'), '1');
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
@@ -72,7 +65,7 @@ test('Confirmation modal displays with the correct withdrawal amount', async () 
 
 test('Confirmation modal displays with the correct withdrawal message', async () => {
   renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '1');
+  userEvent.type(screen.getByRole('textbox'), '1');
   userEvent.click(screen.getByRole('button'));
 
   await waitFor(() => {
@@ -84,35 +77,43 @@ test('Confirmation modal displays with the correct withdrawal message', async ()
   });
 });
 
-
 // // Validation tests
+describe('Withdraw validation', () => {
+  test('fires when $0 is entered', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), '0');
+    userEvent.click(screen.getByRole('button'));
 
-test('Validation check fails when $0 is entered', async () => {
-  renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '0');
-  userEvent.click(screen.getByRole('button'));
-
-
-  await waitFor(() => {
-    expect(
-      screen.getByText(
-        'Amount must be greater than zero'
-      )
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.getByText('Amount must be greater than zero')
+      ).toBeInTheDocument();
+    });
   });
-});
 
-test('Validation check fails when a negative number is entered', async () => {
-  renderDeposit();
-  userEvent.type(screen.getByRole('spinbutton'), '-1');
-  userEvent.click(screen.getByRole('button'));
+  test('fires when a negative number is entered', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), '-1');
+    userEvent.click(screen.getByRole('button'));
 
-
-  await waitFor(() => {
-    expect(
-      screen.getByText(
-        'Amount must be greater than zero'
-      )
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.getByText('Amount must be greater than zero')
+      ).toBeInTheDocument();
+    });
   });
+
+  test('fires when a non-numeric value is entered', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), 'abc');
+    userEvent.click(screen.getByRole('button'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByText('Please enter a non-negative numeric value')
+      ).toBeInTheDocument();
+    });
+  });
+
+
 });

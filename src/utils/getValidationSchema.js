@@ -35,6 +35,7 @@ const getValidationSchema = ({
 
   if (showAmount) {
     schema.amount = Yup.number()
+      .typeError('Please enter a non-negative numeric value')
       .required('Please enter an amount')
       .positive('Amount must be greater than zero')
       .integer('Amount must be greater than zero');

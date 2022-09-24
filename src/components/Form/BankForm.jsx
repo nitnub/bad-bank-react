@@ -53,7 +53,8 @@ function BankForm(props) {
                   <FormElement
                     formik={formik}
                     label={props.transferType}
-                    type="number"
+                    // type="number"
+                    // min="0" step="1"
                   />
                 </>
               )}

@@ -2,8 +2,12 @@
   /* --clr-background: rgb(149, 144, 244);  */
   /* --clr-card-bg: rgb(201, 199, 253); */
   /* --clr-background: rgb(45, 70, 234);  */
-  --clr-background: #39433e; 
+  --clr-background: #39433e;
+  /* --clr-background-main: rgb(207, 205, 205); */
+  --clr-background-main: rgb(230, 230, 230);
+  /* --clr-background-main: #e8e6d4; */
   /* --clr-card-bg: rgb(201, 199, 253); */
+  --clr-white: white;
   --clr-white: white;
 
 }
@@ -28,21 +32,23 @@ body {
 
 .route-container {
   margin: auto;
-  background-color: red;
+  /* background-color: red; */
 }
 
 #page-container {
   width: 100vw;
   display: grid;
   margin: auto;
-  background-color: var(--clr-white);
+  /* background-color: var(--clr-white); */
+  background-color: var(--clr-background-main);
 }
 
 .main-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--clr-white);
+  /* background-color: var(--clr-white); */
+  background-color: var(--clr-background-main);
   height: calc(100vh - 56px); 
 
 }
