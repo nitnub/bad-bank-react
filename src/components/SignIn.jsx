@@ -19,9 +19,10 @@ function SignIn() {
   }, []);
 
   const handler = ({ email, password }) => {
-    const name = getCurrentUser(context).name;
+   
 
     if (userVerified(email, password, context)) {
+      const name = getCurrentUser(context).name;
       setModalMessage((modalmessage) => {
         return {
           ...modalmessage,

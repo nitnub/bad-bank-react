@@ -35,9 +35,6 @@ function CreateAccount() {
       };
     });
 
-    console.log(args);
-
-    console.log('Context: ', context);
     setInitialAccount(() => false);
     setModalVisible(() => true);
   };

@@ -12,7 +12,6 @@ import {
 } from '../utils/util';
 
 function Deposit() {
-
   useEffect(() => {
     setActiveNavLink('nav-deposit');
   }, []);
@@ -30,8 +29,7 @@ function Deposit() {
     const target = document.getElementById('amount');
     const depositAmount = target.value;
     incrementUserBalance(context, depositAmount);
-    
-    
+
     setModalMessage((modalmessage) => {
       return {
         ...modalmessage,
@@ -45,27 +43,26 @@ function Deposit() {
       };
     });
     setModalVisible(() => true);
-    updateUserHistory('deposit', depositAmount, context)
+    updateUserHistory('deposit', depositAmount, context);
   };
 
-
-  
   return (
-    // <div className="page-container">
     <div id="main-content" className="main-content">
-      {/* <div className="header-container"> */}
-        
       <h1 className="content-header">Deposit</h1>
-      
-      {/* </div> */}
-      <BankForm showAmount showname handler={handler} transferType="Deposit" />
+
+      <BankForm
+        showAmount
+        showname
+        buttonText={'Deposit'}
+        handler={handler}
+        transferType="Deposit"
+      />
       <BankModal
         show={modalVisible}
         modalmessage={modalmessage}
         onHide={() => setModalVisible(false)}
       />
     </div>
-    // </div>
   );
 }
 

@@ -56,14 +56,20 @@ function Withdraw() {
       });
       setModalVisible(() => true);
     }
-    
+
     updateUserHistory('withdrawal', withdrawAmount, context);
   };
 
   return (
     <div className="main-content">
       <h1 className="content-header">Withdraw</h1>
-      <BankForm showAmount showname handler={handler} transferType="Withdraw" />
+      <BankForm
+        showAmount
+        showname
+        buttonText={'Withdraw'}
+        handler={handler}
+        transferType="Withdraw"
+      />
       <BankModal
         show={modalVisible}
         modalmessage={modalmessage}

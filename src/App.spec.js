@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-describe('renders nav bar', () => {
+describe('renders home screen', () => {
 
-  test('renders Bad Bank (home) button', () => {
+  test('renders nav bar', () => {
     render(<App />);
-    const homeButton = screen.getByText('Bad Bank');
-    expect(homeButton).toBeInTheDocument();
+    // const homeButton = screen.getByText('Bad Bank');
+    const navBar = screen.getByRole('navigation')
+    expect(navBar).toBeInTheDocument();
   });
 
 })
