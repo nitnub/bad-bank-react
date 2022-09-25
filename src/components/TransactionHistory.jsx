@@ -28,12 +28,12 @@ function TransactionHistory() {
           <tbody>
             {getUserHistory(context).map((transaction, index) => {
               return (
-                <tr key={transaction.id} style={{textAlign: 'right'}}>
-                  <td key={transaction.id} >{1000 + index}</td>
-                  <td key={transaction.id} >{transaction.dateTime}</td>
-                  <td key={transaction.id} >{transaction.deposit > 0 ? intToCurrency(transaction.deposit) : '-'}</td>
-                  <td key={transaction.id} >{transaction.withdrawal > 0 ? intToCurrency(transaction.withdrawal) : '-'}</td>
-                  <td key={transaction.id} >{intToCurrency(transaction.balance)}</td>
+                <tr key={index} style={{textAlign: 'right'}}>
+                  <td>{1000 + index}</td>
+                  <td>{transaction.dateTime}</td>
+                  <td>{transaction.deposit > 0 ? intToCurrency(transaction.deposit) : '-'}</td>
+                  <td>{transaction.withdrawal > 0 ? intToCurrency(transaction.withdrawal) : '-'}</td>
+                  <td>{intToCurrency(transaction.balance)}</td>
                 </tr>
               );
             })}

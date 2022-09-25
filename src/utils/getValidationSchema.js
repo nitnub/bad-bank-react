@@ -17,15 +17,12 @@ const getValidationSchema = ({
     schema.password = Yup.string()
       .required()
       .matches(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-        `Password must have one each of: 
-                Upper case
-                Lower case
-                Number (0-9)
-                Special Character (#?!@$%^&*-)
-                Must be at least 8 characters long`
-      ); //https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
-  }
+        /^.{8,}$/,
+        `Password must be at least 8 characters long`
+      ); 
+  
+  
+    }
 
   if (showEmail) {
     schema.email = Yup.string()
