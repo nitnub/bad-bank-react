@@ -83,7 +83,7 @@ body {
   margin-right: auto;
 }
 
-#outer-c {
+#outer-container {
   grid-area: 1/1/1/1;
 }
 

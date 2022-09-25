@@ -41,7 +41,7 @@ function App() {
           <div className="span-left"></div>
           <div className="span-right"></div>
         </div>
-        <div id="outer-c">
+        <div id="outer-container">
           <Container className="">
             <UserContext.Provider value={initialState}>
               <Routes>

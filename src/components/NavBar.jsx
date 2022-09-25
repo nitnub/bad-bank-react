@@ -82,6 +82,7 @@ function NavBar() {
               </Nav.Link>
             </OverlayTrigger>
           </Nav>
+
           <SignInButton title={'Change User'} />
         </Navbar.Collapse>
       </Container>
