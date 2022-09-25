@@ -1,6 +1,6 @@
 export const testModeState = () => {
   console.log("Starting 'test mode' with 5 starter customers...");
-
+  
   let initialState = {
     currentUser: 0,
     users: [],
@@ -12,7 +12,7 @@ export const testModeState = () => {
     const dateTime = getTimeStamp();
     initialState.users.push({
       id: i,
-      name: `John Smith${i}`,
+      name: `John ${String.fromCharCode(i + 65)}. Smith`,
       email: `jsmith${i}@abcd.com`,
       password: `AAbb!!${i}${i}`,
       balance,
@@ -62,7 +62,6 @@ export const intToCurrency = (int) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    maximumSignificantDigits: 10,
   });
   return formatter.format(int);
 };

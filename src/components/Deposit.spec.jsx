@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Deposit from './Deposit';
 import UserContext from '../contexts/UserContext';
 import userEvent from '@testing-library/user-event';
@@ -45,41 +41,41 @@ test('Deposit updates balance amount', async () => {
   });
 });
 
-test('Confirmation modal displays the Success banner', async () => {
-  renderDeposit();
-  userEvent.type(screen.getByRole('textbox'), '1');
-  userEvent.click(screen.getByRole('button'));
+  test('Confirmation modal displays the Success banner', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), '1');
+    userEvent.click(screen.getByRole('button'));
 
-  await waitFor(() => {
-    expect(screen.getByText('Success!')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('Success!')).toBeInTheDocument();
+    });
   });
-});
 
-test('Confirmation modal displays with the correct deposit amount', async () => {
-  renderDeposit();
-  userEvent.type(screen.getByRole('textbox'), '1');
-  userEvent.click(screen.getByRole('button'));
+  test('Confirmation modal displays with the correct deposit amount', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), '1');
+    userEvent.click(screen.getByRole('button'));
 
-  await waitFor(() => {
-    expect(screen.getByRole('heading', { level: 4 }).textContent).toBe(
-      '$1 deposited'
-    );
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { level: 4 }).textContent).toBe(
+        '$1 deposited'
+      );
+    });
   });
-});
 
-test('Confirmation modal displays with the correct deposit message', async () => {
-  renderDeposit();
-  userEvent.type(screen.getByRole('textbox'), '1');
-  userEvent.click(screen.getByRole('button'));
+  test('Confirmation modal displays with the correct deposit message', async () => {
+    renderDeposit();
+    userEvent.type(screen.getByRole('textbox'), '1');
+    userEvent.click(screen.getByRole('button'));
 
-  await waitFor(() => {
-    expect(
-      screen.getByText(
-        '$1 has been deposited into your account. Your new balance is $1,001.'
-      )
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          '$1 has been deposited into your account. Your new balance is $1,001.'
+        )
+      ).toBeInTheDocument();
+    });
   });
-});
 
 // Validation tests
 describe('Deposit validation', () => {
@@ -119,4 +115,3 @@ describe('Deposit validation', () => {
     });
   });
 });
-

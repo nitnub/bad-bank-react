@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+
 const getValidationSchema = ({
   showName,
   showPassword,
@@ -16,13 +17,8 @@ const getValidationSchema = ({
   if (showPassword) {
     schema.password = Yup.string()
       .required()
-      .matches(
-        /^.{8,}$/,
-        `Password must be at least 8 characters long`
-      ); 
-  
-  
-    }
+      .matches(/^.{8,}$/, `Password must be at least 8 characters long`);
+  }
 
   if (showEmail) {
     schema.email = Yup.string()
@@ -35,7 +31,7 @@ const getValidationSchema = ({
       .typeError('Please enter a non-negative numeric value')
       .required('Please enter an amount')
       .positive('Amount must be greater than zero')
-      .integer('Amount must be greater than zero');
+      .integer('Amount must be a whole number greater than zero');
   }
   return schema;
 };
