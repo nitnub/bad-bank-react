@@ -1,4 +1,5 @@
 /node_modules
 /local-resources
+/local-resource
 
 .env
