@@ -1,8 +1,8 @@
-import express, { Router } from 'express';
+import { Router } from 'express';
 import { undeclaredRoute } from '../entities/account/account.controller';
 
 const undeclaredRouter: Router = Router();
 
-undeclaredRouter.route('/').post(undeclaredRoute);
+undeclaredRouter.route('/').all(undeclaredRoute);
 
-module.exports = undeclaredRouter;
+export default undeclaredRouter;

@@ -1,17 +1,16 @@
+import { Schema, model } from 'mongoose';
 
-import { Schema, model, connect } from 'mongoose';
-
-// Create Account Interface.
+// Account Interface.
 export interface IAccount {
   name?: string;
   email: string;
   password?: string;
-  balance?: number;
+  balance: number;
   salt?: string;
   hash?: string;
 }
 
-// Create Schema
+// Account Schema
 export const accountSchema = new Schema<IAccount>({
   name: {
     type: String,
@@ -41,5 +40,5 @@ export const accountSchema = new Schema<IAccount>({
   },
 });
 
-// Create  Model.
+// Model.
 export const Account = model<IAccount>('AccountTest', accountSchema);

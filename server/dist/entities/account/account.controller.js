@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.undeclaredRoute = exports.getAllData = exports.getAcctHistory = exports.withdraw = exports.deposit = exports.getBalance = exports.createAccount = void 0;
 const account_constructor_1 = __importDefault(require("./account.constructor"));
 const accountModel_1 = require("../../models/accountModel");
+const account_repository_1 = __importDefault(require("./account.repository"));
 function createAccount(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -52,8 +53,8 @@ function getBalance(req, res) {
         }
         catch (error) {
             const err = { message: '' };
-            if (typeof err === 'string')
-                error.message = err;
+            if (typeof error === 'string')
+                err.message = error;
             // const message = err.message ? err.message : err;
             res.status(400).json({
                 status: 'failed',
@@ -87,28 +88,14 @@ exports.deposit = deposit;
 function withdraw(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const acct = yield accountModel_1.Account.findOne({ email: req.body.email });
             if (req.body.amount < 0) {
                 throw Error('Transaction amount must be greater than $0.');
             }
-            if (!acct) {
-                throw Error('Unable to find account.');
-            }
-            if (acct.balance && acct.balance > req.body.amount) {
-                const newBalance = acct.balance - req.body.amount;
-                const filter = { email: req.body.email };
-                const update = { balance: newBalance };
-                const returnValue = yield accountModel_1.Account.findOneAndUpdate(filter, update, {
-                    returnOriginal: false,
-                });
-                res.status(200).json({
-                    status: 'success',
-                    data: returnValue,
-                });
-            }
-            else {
-                throw new Error('Insufficient funds to complete transaction');
-            }
+            const data = yield account_repository_1.default.withdraw(req.body.email, req.body.amount);
+            res.status(200).json({
+                status: 'success',
+                data,
+            });
         }
         catch (err) {
             res.status(400).json({
@@ -119,6 +106,36 @@ function withdraw(req, res) {
     });
 }
 exports.withdraw = withdraw;
+// export async function withdraw(req: Request, res: Response) {
+//   try {
+//     const acct = await Account.findOne({ email: req.body.email });
+//     if (req.body.amount < 0) {
+//       throw Error('Transaction amount must be greater than $0.');
+//     }
+//     if (!acct) {
+//       throw Error('Unable to find account.');
+//     }
+//     if (acct.balance && acct.balance > req.body.amount) {
+//       const newBalance = acct.balance - req.body.amount;
+//       const filter = { email: req.body.email };
+//       const update = { balance: newBalance };
+//       const returnValue = await Account.findOneAndUpdate(filter, update, {
+//         returnOriginal: false,
+//       });
+//       res.status(200).json({
+//         status: 'success',
+//         data: returnValue,
+//       });
+//     } else {
+//       throw new Error('Insufficient funds to complete transaction');
+//     }
+//   } catch (err) {
+//     res.status(400).json({
+//       status: 'failed',
+//       message: err.message,
+//     });
+//   }
+// }
 function getAcctHistory(req, res) {
     res.status(200).json({
         status: 'success',

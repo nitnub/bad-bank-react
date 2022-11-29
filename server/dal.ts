@@ -1,5 +1,6 @@
 import { Collection, Db, InsertOneResult, MongoClient, WithId } from 'mongodb';
 import { Account } from './models/interfaces';
+
 const URL: string = 'mongodb://localhost:27017';
 let db: Db; // = null
 

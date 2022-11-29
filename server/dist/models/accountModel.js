@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Account = exports.accountSchema = void 0;
 const mongoose_1 = require("mongoose");
-// Create Schema
+// Account Schema
 exports.accountSchema = new mongoose_1.Schema({
     name: {
         type: String,
@@ -31,5 +31,5 @@ exports.accountSchema = new mongoose_1.Schema({
         required: [true, '"Account" must contain field "hash" (type: string).'],
     },
 });
-// Create  Model.
+// Model.
 exports.Account = (0, mongoose_1.model)('AccountTest', exports.accountSchema);

@@ -9,4 +9,4 @@ router.route('/balance').get(account_controller_1.getBalance);
 router.route('/withdraw').post(account_controller_1.withdraw);
 router.route('/history').get(account_controller_1.getAcctHistory);
 router.route('/all-data').get(account_controller_1.getAllData);
-module.exports = router;
+exports.default = router;

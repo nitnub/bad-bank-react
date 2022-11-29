@@ -1,5 +1,5 @@
 // External dependencies
-import { ObjectId } from 'mongodb';
+import { ObjectId } from 'mongoose';
 import crypto from 'crypto';
 // Class Implementation
 export default class UserAccount {

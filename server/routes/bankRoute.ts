@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import { Router } from 'express';
 import {
   createAccount,
   getBalance,
@@ -6,7 +6,6 @@ import {
   withdraw,
   getAcctHistory,
   getAllData,
-  undeclaredRoute,
 } from '../entities/account/account.controller';
 
 const router: Router = Router();
@@ -18,4 +17,4 @@ router.route('/withdraw').post(withdraw);
 router.route('/history').get(getAcctHistory);
 router.route('/all-data').get(getAllData);
 
-module.exports = router;
+export default router;
