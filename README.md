@@ -20,7 +20,7 @@ Some of the technologies I integrated into my version of the "Bad Bank" were...
 
 
 ## How to Run
-To run this project, simply navigate to [https://nitnub.github.io/live-bus-tracker](https://nitnub.github.io/live-bus-tracker/).
+To run this project, simply navigate to [https://nitnub.github.io](https://nitnub.github.io/).
 
 
 ## Roadmap of Future Improvements
