@@ -1,27 +1,27 @@
-import express, { Request, Response } from 'express';
-import UserAccount from './account.constructor';
-import { Account } from '../../models/accountModel';
+import { Request, Response } from 'express';
+import { assertIsError } from '../../utils/utilities';
 import dal from './account.repository';
+
+interface AccountRequest {
+  name: string;
+  email: string;
+  password: string;
+  balance: number;
+}
 export async function createAccount(req: Request, res: Response) {
   try {
-    // const name: string = req.body.name;
-    // const email: string = req.body.email;
-    // const password: string = req.body.password;
-    // const balance = req.body.balance * 1 || 0;
-    // const userAccount = new UserAccount(name, email, password, balance);
-    const userAccount = new UserAccount(...Object.values(req.body));
-
-    const testAccount = new Account(userAccount.getUser());
-
-    const newAccount = await Account.create(testAccount);
-
-    console.log(newAccount);
+    const { name, email, password, balance }: AccountRequest = req.body;
+    const data = await dal.createAccount(name, email, password, balance);
 
     res.status(200).json({
       status: 'success',
-      data: newAccount,
+      data,
     });
   } catch (err) {
+    assertIsError(err);
+    // if (typeof err === 'object') {
+
+    // }
     res.status(400).json({
       status: 'failed',
       message: err.message,
@@ -31,18 +31,25 @@ export async function createAccount(req: Request, res: Response) {
 
 export async function getBalance(req: Request, res: Response) {
   try {
-    const result = await Account.findOne({ email: { $eq: req.body.email } });
+    const data = await dal.getBalance(req.body.email);
     res.status(200).json({
       status: 'success',
-      data: result,
+      data,
     });
-  } catch (error) {
-    const err = { message: '' };
-    if (typeof error === 'string') err.message = error;
-    // const message = err.message ? err.message : err;
+  } catch (err) {
+    assertIsError(err);
+    // const err = { message: '' };
+    // interface Err {
+    //   message: string
+    // }
+    // if (typeof error === 'string') {
+    //   err.message = error;
+    // } else err = error;
+    // // if (error instanceof Err ) err.message = error.message;
+    // // const message = err.message ? err.message : err;
     res.status(400).json({
       status: 'failed',
-      message: error.message,
+      message: err.message,
     });
   }
 }
@@ -52,18 +59,22 @@ export async function deposit(req: Request, res: Response) {
     if (req.body.amount < 0) {
       throw Error('Transaction amount must be greater than $0.');
     }
-    // const returnValue = await Account.findOneAndUpdate(
-    //   { email: req.body.email },
-    //   { $inc: { balance: req.body.amount } },
-    //   { returnOriginal: false }
-    // ).exec();
-
     const data = await dal.deposit(req.body.email, req.body.amount);
     res.status(200).json({
       status: 'success',
       data,
     });
-  } catch (err) {
+  } catch (err: unknown) {
+    assertIsError(err);
+    // // if (typeof err === 'object'){
+    // // if (typeof err !== 'object'){
+    //   const caughtError = {}
+    // if (err instanceof Error){
+
+    //    Object.keys(err).includes('message')
+    
+
+    // }
     res.status(400).json({
       status: 'failed',
       message: err.message,
@@ -83,44 +94,13 @@ export async function withdraw(req: Request, res: Response) {
       data,
     });
   } catch (err) {
+    assertIsError(err);
     res.status(400).json({
       status: 'failed',
       message: err.message,
     });
   }
 }
-
-// export async function withdraw(req: Request, res: Response) {
-//   try {
-//     const acct = await Account.findOne({ email: req.body.email });
-//     if (req.body.amount < 0) {
-//       throw Error('Transaction amount must be greater than $0.');
-//     }
-//     if (!acct) {
-//       throw Error('Unable to find account.');
-//     }
-//     if (acct.balance && acct.balance > req.body.amount) {
-//       const newBalance = acct.balance - req.body.amount;
-//       const filter = { email: req.body.email };
-//       const update = { balance: newBalance };
-//       const returnValue = await Account.findOneAndUpdate(filter, update, {
-//         returnOriginal: false,
-//       });
-
-//       res.status(200).json({
-//         status: 'success',
-//         data: returnValue,
-//       });
-//     } else {
-//       throw new Error('Insufficient funds to complete transaction');
-//     }
-//   } catch (err) {
-//     res.status(400).json({
-//       status: 'failed',
-//       message: err.message,
-//     });
-//   }
-// }
 
 export function getAcctHistory(req: Request, res: Response) {
   res.status(200).json({
@@ -131,10 +111,10 @@ export function getAcctHistory(req: Request, res: Response) {
 
 export async function getAllData(req: Request, res: Response) {
   try {
-    const accts = await Account.find();
+    const data = await dal.getAllData();
     res.status(200).json({
       status: 'success',
-      data: accts,
+      data,
     });
   } catch (err) {
     res.status(400).json({

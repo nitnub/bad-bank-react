@@ -13,6 +13,7 @@ class UserAccount {
         this.balance = balance;
         this._id = _id;
         this.setPassword = (password) => { };
+        // Test hash functions!
         this.isValidPassword = (password) => {
             const testHash = crypto_1.default.pbkdf2Sync(password, this.salt, 1000, 64, `sha512`).toString(`hex`);
             return this.hash === testHash;
@@ -27,11 +28,13 @@ class UserAccount {
                 hash: this.hash,
             };
         };
+        // Test hash functions!
         this.salt = crypto_1.default.randomBytes(16).toString('hex');
         this.hash = crypto_1.default.pbkdf2Sync(this.password, this.salt, 1000, 64, `sha512`).toString(`hex`);
     }
 }
 exports.default = UserAccount;
+// Test hash functions!
 // require('crypto').createHash('sha256').update('my-password').digest("hex")
 // this.salt = crypto.randomBytes(16).toString('hex');
 // this.hash = crypto.pbkdf2Sync('my-password', this.salt, 1000, 64, `sha512`).toString(`hex`);

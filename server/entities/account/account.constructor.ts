@@ -12,12 +12,14 @@ export default class UserAccount {
     public balance: number,
     public _id?: ObjectId
   ) {
+    // Test hash functions!
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto.pbkdf2Sync(this.password, this.salt, 1000, 64, `sha512`).toString(`hex`);
   
   }
 
   setPassword = (password: string) => {};
+  // Test hash functions!
   isValidPassword = (password: string) =>{
     const testHash = crypto.pbkdf2Sync(password,  
       this.salt, 1000, 64, `sha512`).toString(`hex`); 
@@ -38,6 +40,7 @@ export default class UserAccount {
   }
  }
 }
+// Test hash functions!
 // require('crypto').createHash('sha256').update('my-password').digest("hex")
 
 // this.salt = crypto.randomBytes(16).toString('hex');
