@@ -1,5 +1,5 @@
 # Bad Bank Exercise
-
+![Bad Bank landing page](screenshot.png)
 Bootcamp project to demonstrate the application of learned front end concepts & technologies. For this project, we were given feature requirements and loose wireframes with guidance to build a basic bank interface with the following functionality:
 * Create Account
 * Deposit
@@ -20,7 +20,7 @@ Some of the technologies I integrated into my version of the "Bad Bank" were...
 
 
 ## How to Run
-To run this project, simply navigate to [https://nitnub.github.io](https://nitnub.github.io/).
+To view this project, simply navigate to this [Amazon S3 bucket](https://nitnub-bad-bank-project.s3.amazonaws.com/index.htm).
 
 
 ## Roadmap of Future Improvements

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import UserContext from '../contexts/UserContext';
 import BankForm from './Form/BankForm';
 import BankModal from './BankModal';
+import axios from 'axios';
 
 import {
   getUserBalance,
@@ -25,25 +26,40 @@ function Deposit() {
   });
   const context = useContext(UserContext);
 
-  const handler = () => {
+  const handler = async () => {
     const target = document.getElementById('amount');
     const depositAmount = target.value;
     incrementUserBalance(context, depositAmount);
 
-    setModalMessage((modalmessage) => {
-      return {
-        ...modalmessage,
-        title: 'Success!',
-        header: `${intToCurrency(depositAmount)} deposited`,
-        body: `${intToCurrency(
-          depositAmount
-        )} has been deposited into your account. Your new balance is ${intToCurrency(
-          getUserBalance(context)
-        )}.`,
-      };
-    });
-    setModalVisible(() => true);
-    updateUserHistory('deposit', depositAmount, context);
+    const URL = 'http://localhost:4000/api/deposit';
+    const email = 'jsmith1@gmail.com';
+  
+    const request = {
+      email,
+      amount: depositAmount,
+    };
+    axios
+      .post(URL, request)
+      .then((res) => {
+      const updatedBalance = res.data.data.balance 
+        // console.log();
+
+        setModalMessage((modalmessage) => {
+          return {
+            ...modalmessage,
+            title: 'Success!',
+            header: `${intToCurrency(depositAmount)} deposited`,
+            body: `${intToCurrency(
+              depositAmount
+            )} has been deposited into your account. Your new balance is ${intToCurrency(
+              updatedBalance
+            )}.`,
+          };
+        });
+        setModalVisible(() => true);
+        updateUserHistory('deposit', depositAmount, context);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

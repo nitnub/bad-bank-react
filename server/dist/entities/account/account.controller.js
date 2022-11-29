@@ -68,6 +68,8 @@ exports.getBalance = getBalance;
 function deposit(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log('entered deposit');
+            console.log(req.body);
             if (req.body.amount < 0) {
                 throw Error('Transaction amount must be greater than $0.');
             }

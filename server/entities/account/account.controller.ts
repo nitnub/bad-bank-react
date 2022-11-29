@@ -56,6 +56,8 @@ export async function getBalance(req: Request, res: Response) {
 
 export async function deposit(req: Request, res: Response) {
   try {
+    console.log('entered deposit')
+    console.log(req.body)
     if (req.body.amount < 0) {
       throw Error('Transaction amount must be greater than $0.');
     }
