@@ -27,4 +27,18 @@ dal.withdraw = async function (email: string, amount: number) {
   });
 };
 
+dal.deposit = async function (email: string, amount: number) {
+  return new Promise((resolve, reject) => {
+    // const returnValue = await Account.findOneAndUpdate(
+    Account.findOneAndUpdate(
+      { email },
+      { $inc: { balance: amount } },
+      { returnOriginal: false }
+    )
+      .exec()
+      .then((returnValue) => resolve(returnValue))
+      .catch((error) => reject(error));
+  });
+};
+
 export default dal;

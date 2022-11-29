@@ -52,15 +52,16 @@ export async function deposit(req: Request, res: Response) {
     if (req.body.amount < 0) {
       throw Error('Transaction amount must be greater than $0.');
     }
-    const returnValue = await Account.findOneAndUpdate(
-      { email: req.body.email },
-      { $inc: { balance: req.body.amount } },
-      { returnOriginal: false }
-    ).exec();
+    // const returnValue = await Account.findOneAndUpdate(
+    //   { email: req.body.email },
+    //   { $inc: { balance: req.body.amount } },
+    //   { returnOriginal: false }
+    // ).exec();
 
+    const data = await dal.deposit(req.body.email, req.body.amount);
     res.status(200).json({
       status: 'success',
-      data: returnValue,
+      data,
     });
   } catch (err) {
     res.status(400).json({

@@ -37,4 +37,15 @@ dal.withdraw = function (email, amount) {
         });
     });
 };
+dal.deposit = function (email, amount) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            // const returnValue = await Account.findOneAndUpdate(
+            accountModel_1.Account.findOneAndUpdate({ email }, { $inc: { balance: amount } }, { returnOriginal: false })
+                .exec()
+                .then((returnValue) => resolve(returnValue))
+                .catch((error) => reject(error));
+        });
+    });
+};
 exports.default = dal;
